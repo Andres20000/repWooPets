@@ -24,6 +24,8 @@ class CarritoComprasViewController: UIViewController, UITableViewDelegate, UITab
 
         // Do any additional setup after loading the view.
         
+        // Configuración UISegmentedControl
+        
         let attributes = [ NSForegroundColorAttributeName : UIColor.white,
                            NSFontAttributeName : UIFont (name: "HelveticaNeue-Light", size: 15.0)];
         let attributesSelected = [ NSForegroundColorAttributeName : UIColor.white,
