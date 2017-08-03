@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>MyPetPruebas.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>84F4FA461EAA955900F3E69A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>84F4FA621EAAAF6900F3E69A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
