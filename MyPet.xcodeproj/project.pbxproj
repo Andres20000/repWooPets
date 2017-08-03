@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		840996AF1EC183ED00693C58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 840996AE1EC183ED00693C58 /* GoogleService-Info.plist */; };
+		840B1B3A1F339B2900423832 /* ResenaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B1B381F339B2900423832 /* ResenaTableViewCell.swift */; };
+		840B1B3B1F339B2900423832 /* ResenaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B1B381F339B2900423832 /* ResenaTableViewCell.swift */; };
+		840B1B3C1F339B2900423832 /* ResenaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B1B391F339B2900423832 /* ResenaTableViewCell.xib */; };
+		840B1B3D1F339B2900423832 /* ResenaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B1B391F339B2900423832 /* ResenaTableViewCell.xib */; };
 		840BD1811ED1339500AAD2AE /* DetallePublicacionOferenteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BD1801ED1339500AAD2AE /* DetallePublicacionOferenteViewController.swift */; };
 		840BD1821ED1339600AAD2AE /* DetallePublicacionOferenteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BD1801ED1339500AAD2AE /* DetallePublicacionOferenteViewController.swift */; };
 		840BD1841ED259AE00AAD2AE /* DestacarPublicacionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BD1831ED259AE00AAD2AE /* DestacarPublicacionViewController.swift */; };
@@ -184,6 +188,8 @@
 		1B040272672C8C297D2CE6C9 /* Pods-MyPet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyPet/Pods-MyPet.debug.xcconfig"; sourceTree = "<group>"; };
 		49E7A6DA1136AACD9514E46A /* Pods-MyPetPruebas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyPetPruebas.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyPetPruebas/Pods-MyPetPruebas.release.xcconfig"; sourceTree = "<group>"; };
 		840996AE1EC183ED00693C58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		840B1B381F339B2900423832 /* ResenaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResenaTableViewCell.swift; sourceTree = "<group>"; };
+		840B1B391F339B2900423832 /* ResenaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResenaTableViewCell.xib; sourceTree = "<group>"; };
 		840BD1801ED1339500AAD2AE /* DetallePublicacionOferenteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetallePublicacionOferenteViewController.swift; sourceTree = "<group>"; };
 		840BD1831ED259AE00AAD2AE /* DestacarPublicacionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestacarPublicacionViewController.swift; sourceTree = "<group>"; };
 		8410A77A1F1870CE0069912F /* PublicacionesPorCategoriaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicacionesPorCategoriaViewController.swift; sourceTree = "<group>"; };
@@ -309,6 +315,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		840B1B371F3398AC00423832 /* Cell Resena */ = {
+			isa = PBXGroup;
+			children = (
+				840B1B381F339B2900423832 /* ResenaTableViewCell.swift */,
+				840B1B391F339B2900423832 /* ResenaTableViewCell.xib */,
+			);
+			name = "Cell Resena";
+			sourceTree = "<group>";
+		};
 		84417B7A1EB2A21C00A70ABC /* Cell Registro Oferente */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +473,7 @@
 				84E4CF281F22EADA009DC256 /* PublicacionProductoViewController.swift */,
 				848E318E1F26601200D35C6D /* PublicacionServicioViewController.swift */,
 				84A766001F2995DB001708CE /* ResenaCompradoresViewController.swift */,
+				840B1B371F3398AC00423832 /* Cell Resena */,
 				84E4CF2B1F22EAE3009DC256 /* FloatRatingView */,
 				84A766031F2ABB8A001708CE /* VistaPreguntasViewController.swift */,
 				84A766061F2AE0F1001708CE /* PreguntarViewController.swift */,
@@ -677,6 +693,7 @@
 				84F4FA551EAA955900F3E69A /* LaunchScreen.storyboard in Resources */,
 				847FDC111ED34029002F9530 /* DetalleEstandarTableViewCell.xib in Resources */,
 				847838CF1F1699EC006A41F8 /* PublicacionCollectionViewCell.xib in Resources */,
+				840B1B3C1F339B2900423832 /* ResenaTableViewCell.xib in Resources */,
 				847FDC171ED3469F002F9530 /* DetalleHorarioTableViewCell.xib in Resources */,
 				84417B991EB93D0D00A70ABC /* HorarioTableViewCell.xib in Resources */,
 				84417B8D1EB2AA0600A70ABC /* EstandarRegistroTableViewCell.xib in Resources */,
@@ -702,6 +719,7 @@
 				847FDC1E1ED37089002F9530 /* DetalleDescripcionTableViewCell.xib in Resources */,
 				84417B8E1EB2AA0600A70ABC /* EstandarRegistroTableViewCell.xib in Resources */,
 				847FDC301ED54353002F9530 /* Assets.xcassets in Resources */,
+				840B1B3D1F339B2900423832 /* ResenaTableViewCell.xib in Resources */,
 				84F4FA701EAAAF6900F3E69A /* LaunchScreen.storyboard in Resources */,
 				847838D01F1699EC006A41F8 /* PublicacionCollectionViewCell.xib in Resources */,
 				84A3E1DA1EC66EA80013E4DD /* CategoriaCollectionViewCell.xib in Resources */,
@@ -827,6 +845,7 @@
 				84A3E1B61EC1850F0013E4DD /* ComandoOferente.swift in Sources */,
 				84A766041F2ABB8A001708CE /* VistaPreguntasViewController.swift in Sources */,
 				84417B911EB2CAE800A70ABC /* DireccionRegistroTableViewCell.swift in Sources */,
+				840B1B3A1F339B2900423832 /* ResenaTableViewCell.swift in Sources */,
 				84417B971EB93D0D00A70ABC /* HorarioTableViewCell.swift in Sources */,
 				84417B9E1EBACB2400A70ABC /* HorarioViewController.swift in Sources */,
 				84417B701EB04F6900A70ABC /* RegistroOferenteViewController.swift in Sources */,
@@ -898,6 +917,7 @@
 				84A3E1B71EC1850F0013E4DD /* ComandoOferente.swift in Sources */,
 				84A766051F2ABB8A001708CE /* VistaPreguntasViewController.swift in Sources */,
 				84417B921EB2CAE800A70ABC /* DireccionRegistroTableViewCell.swift in Sources */,
+				840B1B3B1F339B2900423832 /* ResenaTableViewCell.swift in Sources */,
 				84417B981EB93D0D00A70ABC /* HorarioTableViewCell.swift in Sources */,
 				84417B9F1EBACB2400A70ABC /* HorarioViewController.swift in Sources */,
 				84417B711EB04F6900A70ABC /* RegistroOferenteViewController.swift in Sources */,
