@@ -11,7 +11,7 @@ import UIKit
 class VistaPreguntasViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet var barItemTitulo: UIBarButtonItem!
-    @IBOutlet var tablePQs: UITableView!
+    @IBOutlet var tablePreguntasRespuestas: UITableView!
 
     var tituloVista = ""
     
@@ -34,8 +34,8 @@ class VistaPreguntasViewController: UIViewController, UITableViewDelegate, UITab
         
         barItemTitulo.title = tituloVista
         
-        let nib = UINib(nibName: "AlertaTableViewCell", bundle: nil)
-        tablePQs.register(nib, forCellReuseIdentifier: "alertaTableViewCell")
+        let nib = UINib(nibName: "PreguntaRespuestaTableViewCell", bundle: nil)
+        tablePreguntasRespuestas.register(nib, forCellReuseIdentifier: "preguntaRespuestaTableViewCell")
     }
     
     // #pragma mark - Table View
@@ -57,9 +57,9 @@ class VistaPreguntasViewController: UIViewController, UITableViewDelegate, UITab
          
          return 1
          }*/
-        Comando.init().EmptyMessage("Actualmente no hay preguntas, pero puedes ser el(la) primero(a).", tableView: tablePQs)
+        Comando.init().EmptyMessage("Actualmente no hay preguntas, pero puedes ser el(la) primero(a).", tableView: tablePreguntasRespuestas)
         
-        tablePQs.separatorStyle = .none
+        tablePreguntasRespuestas.separatorStyle = .none
         
         return 1
     }
@@ -72,7 +72,7 @@ class VistaPreguntasViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "alertaTableViewCell")  as! AlertaTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "preguntaRespuestaTableViewCell")  as! PreguntaRespuestaTableViewCell
         
         return cell;
     }
@@ -84,7 +84,7 @@ class VistaPreguntasViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 85
+        return 130
     }
     
     @IBAction func preguntar(_ sender: Any)

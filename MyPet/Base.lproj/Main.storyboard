@@ -4774,7 +4774,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="barItemTitulo" destination="Sfv-oZ-DF9" id="OR0-bv-WCD"/>
-                        <outlet property="tablePQs" destination="7uc-9z-YmH" id="7XM-9c-gBc"/>
+                        <outlet property="tablePreguntasRespuestas" destination="7uc-9z-YmH" id="ZtV-uA-ooG"/>
                         <segue destination="hAX-UJ-oBp" kind="presentation" identifier="preguntarDesdeVistaPreguntas" animates="NO" id="Mel-NR-8B0"/>
                     </connections>
                 </viewController>
@@ -8209,27 +8209,27 @@
         <image name="textura_Ingreso" width="375" height="667"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="A6W-wT-hwa"/>
-        <segue reference="SKH-9m-KS5"/>
-        <segue reference="ceK-EH-2VH"/>
-        <segue reference="g9R-86-rZ3"/>
-        <segue reference="rzp-TS-BC7"/>
-        <segue reference="UlJ-My-ATf"/>
-        <segue reference="g9o-0N-P4D"/>
-        <segue reference="bVH-Q1-m3n"/>
-        <segue reference="5AM-1p-jx9"/>
-        <segue reference="l7r-99-OB3"/>
-        <segue reference="k7m-qH-c1t"/>
-        <segue reference="aNJ-m2-0I0"/>
-        <segue reference="qav-fg-sdY"/>
-        <segue reference="gNs-38-JWS"/>
-        <segue reference="ebI-ph-1Ok"/>
-        <segue reference="8j2-lp-SYU"/>
+        <segue reference="BMh-Gi-I73"/>
+        <segue reference="hgm-wc-gfv"/>
         <segue reference="KYp-Nj-cvD"/>
         <segue reference="sYu-Og-K4J"/>
         <segue reference="Ujj-Fc-o7Y"/>
+        <segue reference="8j2-lp-SYU"/>
         <segue reference="cT9-T2-yqT"/>
-        <segue reference="hgm-wc-gfv"/>
-        <segue reference="BMh-Gi-I73"/>
+        <segue reference="UlJ-My-ATf"/>
+        <segue reference="SKH-9m-KS5"/>
+        <segue reference="ceK-EH-2VH"/>
+        <segue reference="g9R-86-rZ3"/>
+        <segue reference="5AM-1p-jx9"/>
+        <segue reference="rzp-TS-BC7"/>
+        <segue reference="A6W-wT-hwa"/>
+        <segue reference="g9o-0N-P4D"/>
+        <segue reference="bVH-Q1-m3n"/>
+        <segue reference="qav-fg-sdY"/>
+        <segue reference="ebI-ph-1Ok"/>
+        <segue reference="gNs-38-JWS"/>
+        <segue reference="Mel-NR-8B0"/>
+        <segue reference="l7r-99-OB3"/>
+        <segue reference="k7m-qH-c1t"/>
     </inferredMetricsTieBreakers>
 </document>

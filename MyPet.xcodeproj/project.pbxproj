@@ -12,6 +12,10 @@
 		840B1B3B1F339B2900423832 /* ResenaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B1B381F339B2900423832 /* ResenaTableViewCell.swift */; };
 		840B1B3C1F339B2900423832 /* ResenaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B1B391F339B2900423832 /* ResenaTableViewCell.xib */; };
 		840B1B3D1F339B2900423832 /* ResenaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B1B391F339B2900423832 /* ResenaTableViewCell.xib */; };
+		840B1B471F33C6D700423832 /* PreguntaRespuestaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B1B451F33C6D700423832 /* PreguntaRespuestaTableViewCell.swift */; };
+		840B1B481F33C6D700423832 /* PreguntaRespuestaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B1B451F33C6D700423832 /* PreguntaRespuestaTableViewCell.swift */; };
+		840B1B491F33C6D700423832 /* PreguntaRespuestaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B1B461F33C6D700423832 /* PreguntaRespuestaTableViewCell.xib */; };
+		840B1B4A1F33C6D700423832 /* PreguntaRespuestaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B1B461F33C6D700423832 /* PreguntaRespuestaTableViewCell.xib */; };
 		840BD1811ED1339500AAD2AE /* DetallePublicacionOferenteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BD1801ED1339500AAD2AE /* DetallePublicacionOferenteViewController.swift */; };
 		840BD1821ED1339600AAD2AE /* DetallePublicacionOferenteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BD1801ED1339500AAD2AE /* DetallePublicacionOferenteViewController.swift */; };
 		840BD1841ED259AE00AAD2AE /* DestacarPublicacionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BD1831ED259AE00AAD2AE /* DestacarPublicacionViewController.swift */; };
@@ -190,6 +194,8 @@
 		840996AE1EC183ED00693C58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		840B1B381F339B2900423832 /* ResenaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResenaTableViewCell.swift; sourceTree = "<group>"; };
 		840B1B391F339B2900423832 /* ResenaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResenaTableViewCell.xib; sourceTree = "<group>"; };
+		840B1B451F33C6D700423832 /* PreguntaRespuestaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreguntaRespuestaTableViewCell.swift; sourceTree = "<group>"; };
+		840B1B461F33C6D700423832 /* PreguntaRespuestaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreguntaRespuestaTableViewCell.xib; sourceTree = "<group>"; };
 		840BD1801ED1339500AAD2AE /* DetallePublicacionOferenteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetallePublicacionOferenteViewController.swift; sourceTree = "<group>"; };
 		840BD1831ED259AE00AAD2AE /* DestacarPublicacionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestacarPublicacionViewController.swift; sourceTree = "<group>"; };
 		8410A77A1F1870CE0069912F /* PublicacionesPorCategoriaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicacionesPorCategoriaViewController.swift; sourceTree = "<group>"; };
@@ -322,6 +328,15 @@
 				840B1B391F339B2900423832 /* ResenaTableViewCell.xib */,
 			);
 			name = "Cell Resena";
+			sourceTree = "<group>";
+		};
+		840B1B3E1F33C43A00423832 /* Cell Pregunta Respuesta */ = {
+			isa = PBXGroup;
+			children = (
+				840B1B451F33C6D700423832 /* PreguntaRespuestaTableViewCell.swift */,
+				840B1B461F33C6D700423832 /* PreguntaRespuestaTableViewCell.xib */,
+			);
+			name = "Cell Pregunta Respuesta";
 			sourceTree = "<group>";
 		};
 		84417B7A1EB2A21C00A70ABC /* Cell Registro Oferente */ = {
@@ -476,6 +491,7 @@
 				840B1B371F3398AC00423832 /* Cell Resena */,
 				84E4CF2B1F22EAE3009DC256 /* FloatRatingView */,
 				84A766031F2ABB8A001708CE /* VistaPreguntasViewController.swift */,
+				840B1B3E1F33C43A00423832 /* Cell Pregunta Respuesta */,
 				84A766061F2AE0F1001708CE /* PreguntarViewController.swift */,
 				84A766091F2AE9CE001708CE /* InfoVendedorViewController.swift */,
 				84BD207D1EF0A56C001422E7 /* CarritoComprasViewController.swift */,
@@ -698,6 +714,7 @@
 				84417B991EB93D0D00A70ABC /* HorarioTableViewCell.xib in Resources */,
 				84417B8D1EB2AA0600A70ABC /* EstandarRegistroTableViewCell.xib in Resources */,
 				84A3E1D91EC66EA80013E4DD /* CategoriaCollectionViewCell.xib in Resources */,
+				840B1B491F33C6D700423832 /* PreguntaRespuestaTableViewCell.xib in Resources */,
 				84CA9EFE1F02E6ED000F6F72 /* MascotaTableViewCell.xib in Resources */,
 				8451A38D1EFB7A6200B59E46 /* UbicacionTableViewCell.xib in Resources */,
 				8453268A1F0C9B11007A4776 /* AlertaTableViewCell.xib in Resources */,
@@ -713,6 +730,7 @@
 				84417B941EB2CAE800A70ABC /* DireccionRegistroTableViewCell.xib in Resources */,
 				84A3E1D31EC4335B0013E4DD /* PublicacionTableViewCell.xib in Resources */,
 				84CA9EFF1F02E6ED000F6F72 /* MascotaTableViewCell.xib in Resources */,
+				840B1B4A1F33C6D700423832 /* PreguntaRespuestaTableViewCell.xib in Resources */,
 				84F4FA781EAAEF0300F3E69A /* Main.storyboard in Resources */,
 				8453268B1F0C9B11007A4776 /* AlertaTableViewCell.xib in Resources */,
 				84417B9A1EB93D0D00A70ABC /* HorarioTableViewCell.xib in Resources */,
@@ -863,6 +881,7 @@
 				84A3E1DC1EC6B4350013E4DD /* ComandoPublicacion.swift in Sources */,
 				84BD207E1EF0A56C001422E7 /* CarritoComprasViewController.swift in Sources */,
 				8446CC3D1EE8F927005BA3D4 /* IngresoExitosoViewController.swift in Sources */,
+				840B1B471F33C6D700423832 /* PreguntaRespuestaTableViewCell.swift in Sources */,
 				84A766071F2AE0F1001708CE /* PreguntarViewController.swift in Sources */,
 				8446CC501EEB8650005BA3D4 /* RegistroUsuarioTresViewController.swift in Sources */,
 				84BD20781EF09FDB001422E7 /* HomeUsuarioViewController.swift in Sources */,
@@ -935,6 +954,7 @@
 				84A3E1DD1EC6B4350013E4DD /* ComandoPublicacion.swift in Sources */,
 				84BD207F1EF0A56C001422E7 /* CarritoComprasViewController.swift in Sources */,
 				8446CC3E1EE8F927005BA3D4 /* IngresoExitosoViewController.swift in Sources */,
+				840B1B481F33C6D700423832 /* PreguntaRespuestaTableViewCell.swift in Sources */,
 				84A766081F2AE0F1001708CE /* PreguntarViewController.swift in Sources */,
 				8446CC511EEB8650005BA3D4 /* RegistroUsuarioTresViewController.swift in Sources */,
 				84BD20791EF09FDB001422E7 /* HomeUsuarioViewController.swift in Sources */,
