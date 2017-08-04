@@ -24,6 +24,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) desea usar la cámara para que Ud tome una foto y usar dentro de la App.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>$(PRODUCT_NAME) desea usar tus contactos para facilitar compartir las publicaciones.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) desea usar la galería de fotos para que Ud seleccione una foto y usar dentro de la App.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -61,9 +63,9 @@
 		</dict>
 	</array>
 	<key>FacebookAppID</key>
-	<string>{your-app-id}</string>
+	<string>858554884295106</string>
 	<key>FacebookDisplayName</key>
-	<string>{your-app-name}</string>
+	<string>WooPetsPruebas</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
