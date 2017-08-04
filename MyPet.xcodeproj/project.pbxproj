@@ -16,8 +16,8 @@
 		840B1B481F33C6D700423832 /* PreguntaRespuestaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B1B451F33C6D700423832 /* PreguntaRespuestaTableViewCell.swift */; };
 		840B1B491F33C6D700423832 /* PreguntaRespuestaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B1B461F33C6D700423832 /* PreguntaRespuestaTableViewCell.xib */; };
 		840B1B4A1F33C6D700423832 /* PreguntaRespuestaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B1B461F33C6D700423832 /* PreguntaRespuestaTableViewCell.xib */; };
-		840B1B4D1F341A3800423832 /* AgendarServicioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B1B4C1F341A3800423832 /* AgendarServicioTableViewCell.swift */; };
-		840B1B4E1F341A3800423832 /* AgendarServicioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B1B4C1F341A3800423832 /* AgendarServicioTableViewCell.swift */; };
+		840B1B501F34217600423832 /* AgendarServicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B1B4F1F34217600423832 /* AgendarServicioViewController.swift */; };
+		840B1B511F34217600423832 /* AgendarServicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B1B4F1F34217600423832 /* AgendarServicioViewController.swift */; };
 		840BD1811ED1339500AAD2AE /* DetallePublicacionOferenteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BD1801ED1339500AAD2AE /* DetallePublicacionOferenteViewController.swift */; };
 		840BD1821ED1339600AAD2AE /* DetallePublicacionOferenteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BD1801ED1339500AAD2AE /* DetallePublicacionOferenteViewController.swift */; };
 		840BD1841ED259AE00AAD2AE /* DestacarPublicacionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BD1831ED259AE00AAD2AE /* DestacarPublicacionViewController.swift */; };
@@ -198,7 +198,7 @@
 		840B1B391F339B2900423832 /* ResenaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResenaTableViewCell.xib; sourceTree = "<group>"; };
 		840B1B451F33C6D700423832 /* PreguntaRespuestaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreguntaRespuestaTableViewCell.swift; sourceTree = "<group>"; };
 		840B1B461F33C6D700423832 /* PreguntaRespuestaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreguntaRespuestaTableViewCell.xib; sourceTree = "<group>"; };
-		840B1B4C1F341A3800423832 /* AgendarServicioTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendarServicioTableViewCell.swift; sourceTree = "<group>"; };
+		840B1B4F1F34217600423832 /* AgendarServicioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendarServicioViewController.swift; sourceTree = "<group>"; };
 		840BD1801ED1339500AAD2AE /* DetallePublicacionOferenteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetallePublicacionOferenteViewController.swift; sourceTree = "<group>"; };
 		840BD1831ED259AE00AAD2AE /* DestacarPublicacionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestacarPublicacionViewController.swift; sourceTree = "<group>"; };
 		8410A77A1F1870CE0069912F /* PublicacionesPorCategoriaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicacionesPorCategoriaViewController.swift; sourceTree = "<group>"; };
@@ -497,7 +497,7 @@
 				8410A77A1F1870CE0069912F /* PublicacionesPorCategoriaViewController.swift */,
 				84E4CF281F22EADA009DC256 /* PublicacionProductoViewController.swift */,
 				848E318E1F26601200D35C6D /* PublicacionServicioViewController.swift */,
-				840B1B4C1F341A3800423832 /* AgendarServicioTableViewCell.swift */,
+				840B1B4F1F34217600423832 /* AgendarServicioViewController.swift */,
 				84A766001F2995DB001708CE /* ResenaCompradoresViewController.swift */,
 				840B1B371F3398AC00423832 /* Cell Resena */,
 				84E4CF2B1F22EAE3009DC256 /* FloatRatingView */,
@@ -888,6 +888,7 @@
 				84417BA31EBD1EA100A70ABC /* ModeloOferente.swift in Sources */,
 				84A3E1D71EC66EA80013E4DD /* CategoriaCollectionViewCell.swift in Sources */,
 				845326831F0C9015007A4776 /* AdministrarAlarmasViewController.swift in Sources */,
+				840B1B501F34217600423832 /* AgendarServicioViewController.swift in Sources */,
 				84BD206F1EF0922B001422E7 /* Modelo.swift in Sources */,
 				84A3E1B91EC29DD40013E4DD /* HomeOferenteViewController.swift in Sources */,
 				84A3E1DC1EC6B4350013E4DD /* ComandoPublicacion.swift in Sources */,
@@ -904,7 +905,6 @@
 				8410A77B1F1870CE0069912F /* PublicacionesPorCategoriaViewController.swift in Sources */,
 				84F4FA4D1EAA955900F3E69A /* ViewController.swift in Sources */,
 				84D5AC091EE7A64C00A18D7E /* InicioSesionUsuarioViewController.swift in Sources */,
-				840B1B4D1F341A3800423832 /* AgendarServicioTableViewCell.swift in Sources */,
 				84F4FA5E1EAA9BE800F3E69A /* IngresoViewController.swift in Sources */,
 				84BD20721EF092DB001422E7 /* Comando.swift in Sources */,
 				847FDC0F1ED34029002F9530 /* DetalleEstandarTableViewCell.swift in Sources */,
@@ -962,6 +962,7 @@
 				84417BA41EBD1EA100A70ABC /* ModeloOferente.swift in Sources */,
 				84A3E1D81EC66EA80013E4DD /* CategoriaCollectionViewCell.swift in Sources */,
 				845326841F0C9015007A4776 /* AdministrarAlarmasViewController.swift in Sources */,
+				840B1B511F34217600423832 /* AgendarServicioViewController.swift in Sources */,
 				84BD20701EF0922B001422E7 /* Modelo.swift in Sources */,
 				84A3E1BA1EC29DD40013E4DD /* HomeOferenteViewController.swift in Sources */,
 				84A3E1DD1EC6B4350013E4DD /* ComandoPublicacion.swift in Sources */,
@@ -978,7 +979,6 @@
 				8410A77C1F1870CE0069912F /* PublicacionesPorCategoriaViewController.swift in Sources */,
 				84F4FA761EAAEEF700F3E69A /* ViewController.swift in Sources */,
 				84D5AC0A1EE7A64C00A18D7E /* InicioSesionUsuarioViewController.swift in Sources */,
-				840B1B4E1F341A3800423832 /* AgendarServicioTableViewCell.swift in Sources */,
 				84F4FA771EAAEEFA00F3E69A /* IngresoViewController.swift in Sources */,
 				84BD20731EF092DB001422E7 /* Comando.swift in Sources */,
 				847FDC101ED34029002F9530 /* DetalleEstandarTableViewCell.swift in Sources */,

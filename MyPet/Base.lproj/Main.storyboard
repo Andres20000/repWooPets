@@ -4397,6 +4397,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="58" id="VdG-Ue-7lU"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="agendarServicio:" destination="evv-T1-4Jo" eventType="touchUpInside" id="rP7-xw-27C"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4qO-Pe-64e">
                                                 <rect key="frame" x="0.0" y="88" width="375" height="1"/>
@@ -4679,17 +4682,17 @@
                         <segue destination="1qp-2i-U0Y" kind="presentation" identifier="vistaPreguntasDesdePublicacionServicio" animates="NO" id="Sxi-cS-EGb"/>
                         <segue destination="hAX-UJ-oBp" kind="presentation" identifier="preguntarDesdePublicacionServicio" animates="NO" id="B7O-E2-n1O"/>
                         <segue destination="sge-lL-fYn" kind="presentation" identifier="infoVendedorDesdePublicacionServicio" animates="NO" id="ZfC-qD-0SX"/>
-                        <segue destination="h6X-hg-ui4" kind="presentation" identifier="agendarDesdePublicacionServicio" id="8LJ-qt-Z61"/>
+                        <segue destination="h6X-hg-ui4" kind="presentation" identifier="agendarDesdePublicacionServicio" animates="NO" id="8LJ-qt-Z61"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JoW-Jd-hXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6085.6000000000004" y="-733.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Agendar Servicio View Controller-->
         <scene sceneID="dj2-3D-OOt">
             <objects>
-                <viewController id="h6X-hg-ui4" sceneMemberID="viewController">
+                <viewController id="h6X-hg-ui4" customClass="AgendarServicioViewController" customModule="MyPet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F5c-xI-vuN"/>
                         <viewControllerLayoutGuide type="bottom" id="45y-sn-MXK"/>
@@ -4707,7 +4710,7 @@
                                     <barButtonItem image="btnAtrasBlanco" id="XbY-Oa-tXQ">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <action selector="backView:" destination="hxH-1o-7RN" id="xgv-oB-t7r"/>
+                                            <action selector="backView:" destination="h6X-hg-ui4" id="XnE-7L-68T"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="Iyb-25-YRG"/>
@@ -4774,6 +4777,9 @@
                                 <state key="normal" title="Cancelar">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="backView:" destination="h6X-hg-ui4" eventType="touchUpInside" id="xXW-7v-OUc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -4802,6 +4808,12 @@
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="btnAceptar" destination="3Pc-yf-Y6j" id="DaI-AP-ZGp"/>
+                        <outlet property="btnCancelar" destination="3Fz-fp-yYZ" id="b3C-Sb-75C"/>
+                        <outlet property="datePicker" destination="yH8-ER-4Pn" id="97g-V0-nx3"/>
+                        <outlet property="lblDuracion" destination="WXM-Eg-BBu" id="TAX-q9-nFz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dyM-Nn-hP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -8346,8 +8358,8 @@
         <segue reference="A6W-wT-hwa"/>
         <segue reference="g9o-0N-P4D"/>
         <segue reference="bVH-Q1-m3n"/>
+        <segue reference="ebI-ph-1Ok"/>
         <segue reference="B7O-E2-n1O"/>
-        <segue reference="Sxi-cS-EGb"/>
         <segue reference="ZfC-qD-0SX"/>
         <segue reference="pQ7-FT-sEN"/>
         <segue reference="l7r-99-OB3"/>

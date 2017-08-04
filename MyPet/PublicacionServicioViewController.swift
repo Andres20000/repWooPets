@@ -79,6 +79,17 @@ class PublicacionServicioViewController: UIViewController, UIPageViewControllerD
         self.performSegue(withIdentifier: "resenaCompradoresDesdePublicacionServicio", sender: self)
     }
     
+    @IBAction func agendarServicio(_ sender: Any)
+    {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight
+        view.window!.layer.add(transition, forKey: kCATransition)
+        
+        self.performSegue(withIdentifier: "agendarDesdePublicacionServicio", sender: self)
+    }
+    
     @IBAction func verPreguntas(_ sender: Any)
     {
         let transition = CATransition()
