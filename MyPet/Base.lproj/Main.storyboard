@@ -4178,7 +4178,6 @@
                                 </state>
                                 <connections>
                                     <action selector="cancelar:" destination="V0R-Bf-sCT" eventType="touchUpInside" id="Jex-Tz-a3R"/>
-                                    <action selector="cancelar:" destination="ueq-d9-g2S" eventType="touchUpInside" id="Kss-iQ-aM3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -4680,11 +4679,133 @@
                         <segue destination="1qp-2i-U0Y" kind="presentation" identifier="vistaPreguntasDesdePublicacionServicio" animates="NO" id="Sxi-cS-EGb"/>
                         <segue destination="hAX-UJ-oBp" kind="presentation" identifier="preguntarDesdePublicacionServicio" animates="NO" id="B7O-E2-n1O"/>
                         <segue destination="sge-lL-fYn" kind="presentation" identifier="infoVendedorDesdePublicacionServicio" animates="NO" id="ZfC-qD-0SX"/>
+                        <segue destination="h6X-hg-ui4" kind="presentation" identifier="agendarDesdePublicacionServicio" id="8LJ-qt-Z61"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JoW-Jd-hXO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6085.6000000000004" y="-733.5832083958021"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="dj2-3D-OOt">
+            <objects>
+                <viewController id="h6X-hg-ui4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F5c-xI-vuN"/>
+                        <viewControllerLayoutGuide type="bottom" id="45y-sn-MXK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4ge-h2-YJe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRz-ve-x0e">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="2qo-l3-Hlr"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem image="btnAtrasBlanco" id="XbY-Oa-tXQ">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="backView:" destination="hxH-1o-7RN" id="xgv-oB-t7r"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="Iyb-25-YRG"/>
+                                    <barButtonItem title="Agendar" id="WcX-KW-3rR">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" red="0.0" green="0.75686274509999996" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Puedes seleccionar la fecha y horario deseada para hacer efectivo el servicio." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="VlA-0Q-pwl">
+                                <rect key="frame" x="16" y="76" width="343" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="aEX-8o-xcb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recuerda, la duración de este servicio es de:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nar-yn-7Bh">
+                                <rect key="frame" x="16" y="145" width="343" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="umB-YE-iaz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duración" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="WXM-Eg-BBu">
+                                <rect key="frame" x="16" y="165" width="343" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="da3-BQ-6s3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.30196078430000001" green="0.30196078430000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="yH8-ER-4Pn">
+                                <rect key="frame" x="16" y="205" width="343" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="PPm-e3-lRV"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="523505883.358621">
+                                    <!--2017-08-04 02:18:03 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Pc-yf-Y6j">
+                                <rect key="frame" x="16" y="459" width="343" height="40"/>
+                                <color key="backgroundColor" red="0.050980392159999999" green="0.43921568630000002" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="yPJ-kJ-SXL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Aceptar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Fz-fp-yYZ">
+                                <rect key="frame" x="16" y="513" width="343" height="40"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.25882352939999997" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="r82-Z3-2Fz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Cancelar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VlA-0Q-pwl" firstAttribute="top" secondItem="IRz-ve-x0e" secondAttribute="bottom" constant="32" id="0kI-R3-iet"/>
+                            <constraint firstItem="3Pc-yf-Y6j" firstAttribute="trailing" secondItem="4ge-h2-YJe" secondAttribute="trailingMargin" id="2Na-ad-Sqn"/>
+                            <constraint firstItem="nar-yn-7Bh" firstAttribute="top" secondItem="VlA-0Q-pwl" secondAttribute="bottom" constant="19" id="3iI-Id-tPz"/>
+                            <constraint firstItem="yH8-ER-4Pn" firstAttribute="trailing" secondItem="4ge-h2-YJe" secondAttribute="trailingMargin" id="5qz-LB-1mg"/>
+                            <constraint firstItem="WXM-Eg-BBu" firstAttribute="trailing" secondItem="4ge-h2-YJe" secondAttribute="trailingMargin" id="CDE-ZU-phs"/>
+                            <constraint firstItem="IRz-ve-x0e" firstAttribute="leading" secondItem="4ge-h2-YJe" secondAttribute="leading" id="JJR-t7-qjX"/>
+                            <constraint firstItem="yH8-ER-4Pn" firstAttribute="top" secondItem="WXM-Eg-BBu" secondAttribute="bottom" constant="20" id="KwA-z0-FbM"/>
+                            <constraint firstItem="WXM-Eg-BBu" firstAttribute="leading" secondItem="4ge-h2-YJe" secondAttribute="leadingMargin" id="N57-Wd-gdu"/>
+                            <constraint firstItem="3Pc-yf-Y6j" firstAttribute="leading" secondItem="4ge-h2-YJe" secondAttribute="leadingMargin" id="UFW-Ff-tM3"/>
+                            <constraint firstItem="nar-yn-7Bh" firstAttribute="leading" secondItem="4ge-h2-YJe" secondAttribute="leadingMargin" id="Ude-fn-Vhm"/>
+                            <constraint firstItem="nar-yn-7Bh" firstAttribute="trailing" secondItem="4ge-h2-YJe" secondAttribute="trailingMargin" id="W2D-xz-FHM"/>
+                            <constraint firstItem="WXM-Eg-BBu" firstAttribute="top" secondItem="nar-yn-7Bh" secondAttribute="bottom" id="WHy-vz-Zth"/>
+                            <constraint firstItem="IRz-ve-x0e" firstAttribute="top" secondItem="F5c-xI-vuN" secondAttribute="bottom" id="d6r-yF-9Gu"/>
+                            <constraint firstItem="3Pc-yf-Y6j" firstAttribute="top" secondItem="yH8-ER-4Pn" secondAttribute="bottom" constant="38" id="eSH-P6-tmQ"/>
+                            <constraint firstItem="yH8-ER-4Pn" firstAttribute="leading" secondItem="4ge-h2-YJe" secondAttribute="leadingMargin" id="fjx-pa-UDy"/>
+                            <constraint firstItem="3Fz-fp-yYZ" firstAttribute="trailing" secondItem="4ge-h2-YJe" secondAttribute="trailingMargin" id="lFe-hx-3QY"/>
+                            <constraint firstItem="VlA-0Q-pwl" firstAttribute="leading" secondItem="4ge-h2-YJe" secondAttribute="leadingMargin" id="mUe-2U-YXr"/>
+                            <constraint firstItem="3Fz-fp-yYZ" firstAttribute="top" secondItem="3Pc-yf-Y6j" secondAttribute="bottom" constant="14" id="miL-YG-Yfc"/>
+                            <constraint firstItem="3Fz-fp-yYZ" firstAttribute="leading" secondItem="4ge-h2-YJe" secondAttribute="leadingMargin" id="nJ1-kW-cTV"/>
+                            <constraint firstAttribute="trailing" secondItem="IRz-ve-x0e" secondAttribute="trailing" id="xk7-fe-J32"/>
+                            <constraint firstItem="VlA-0Q-pwl" firstAttribute="trailing" secondItem="4ge-h2-YJe" secondAttribute="trailingMargin" id="y7w-gb-fqb"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dyM-Nn-hP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6085.6000000000004" y="35.532233883058474"/>
         </scene>
         <!--Vista Preguntas View Controller-->
         <scene sceneID="9U0-sY-vhu">
@@ -8225,10 +8346,10 @@
         <segue reference="A6W-wT-hwa"/>
         <segue reference="g9o-0N-P4D"/>
         <segue reference="bVH-Q1-m3n"/>
-        <segue reference="qav-fg-sdY"/>
-        <segue reference="ebI-ph-1Ok"/>
-        <segue reference="gNs-38-JWS"/>
-        <segue reference="Mel-NR-8B0"/>
+        <segue reference="B7O-E2-n1O"/>
+        <segue reference="Sxi-cS-EGb"/>
+        <segue reference="ZfC-qD-0SX"/>
+        <segue reference="pQ7-FT-sEN"/>
         <segue reference="l7r-99-OB3"/>
         <segue reference="k7m-qH-c1t"/>
     </inferredMetricsTieBreakers>

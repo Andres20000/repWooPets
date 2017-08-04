@@ -83,6 +83,12 @@
                     <constraint firstItem="7pZ-K4-0LJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="z4g-v3-gHc"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lblEstadoPregunta" destination="gE2-fk-CKu" id="Tdd-CC-1oO"/>
+                <outlet property="lblFecha" destination="Cwo-YK-bd6" id="MHa-Ch-5z7"/>
+                <outlet property="lblPreguntaUsuario" destination="7pZ-K4-0LJ" id="eYe-Lx-Dsb"/>
+                <outlet property="textRespuestaOferente" destination="nTD-EN-o88" id="lY1-eS-GqR"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

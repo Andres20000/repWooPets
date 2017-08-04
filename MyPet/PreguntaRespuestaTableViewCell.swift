@@ -8,14 +8,21 @@
 
 import UIKit
 
-class PreguntaRespuestaTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
+class PreguntaRespuestaTableViewCell: UITableViewCell
+{
+    @IBOutlet var lblFecha: UILabel!
+    @IBOutlet var lblPreguntaUsuario: UILabel!
+    @IBOutlet var lblEstadoPregunta: UILabel!
+    @IBOutlet var textRespuestaOferente: UITextView!
+    
+    override func awakeFromNib()
+    {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool)
+    {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
