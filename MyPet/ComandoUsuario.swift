@@ -299,6 +299,6 @@ class ComandoUsuario
     class func activarDesactivarFavorito(uid:String?, idPublicacion:String?, activo:Bool)
     {
         let refHandle = FIRDatabase.database().reference().child("clientes/" + uid! + "/favoritos")
-        refHandle.child("/\(idPublicacion)").setValue(activo)
+        refHandle.child("/\(idPublicacion!)").setValue(activo)
     }
 }

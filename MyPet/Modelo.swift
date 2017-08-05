@@ -54,6 +54,8 @@ class Modelo
     }()
     
     // Datos Publicaciones
+    var publicacionesFavoritas = [PublicacionOferente]()
+    
     var publicacionesDestacadas = [PublicacionOferente]()
     
     var publicacionesPopulares = [PublicacionOferente]()

@@ -82,6 +82,14 @@ class RegistroUsuarioDosViewController: UIViewController, UIScrollViewDelegate, 
         
         // Do any additional setup after loading the view.
         
+        if Comando.validarTipoIngreso()
+        {
+            imgMailFB.image = UIImage(named: "imgFbOk")
+        }else
+        {
+            imgMailFB.image = UIImage(named: "imgMailOk")
+        }
+        
         tieneDireccionTres = false
         
         let spacerViewTxtNombre = UIView(frame:CGRect(x:0, y:0, width:5, height:5))

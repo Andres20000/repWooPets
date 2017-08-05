@@ -1797,6 +1797,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="g7J-Mv-G2T"/>
                                     <barButtonItem image="btnNoFavorito" id="BGc-HU-HRK">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="marcarComoFavorito:" destination="OrV-0p-8J0" id="UrM-39-QqE"/>
+                                        </connections>
                                     </barButtonItem>
                                 </items>
                                 <color key="barTintColor" red="0.0" green="0.75686274509999996" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -2210,6 +2213,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="barItemFavorito" destination="BGc-HU-HRK" id="sm5-SX-ZIS"/>
                         <outlet property="btnCarrito" destination="Uby-ws-G7w" id="sGD-tl-2Cb"/>
                         <outlet property="btnComprar" destination="bJM-cA-cwu" id="VgM-Z1-fNb"/>
                         <outlet property="btnPreguntar" destination="G1R-qE-uhQ" id="LMq-TX-BIf"/>
@@ -3020,12 +3024,23 @@
                                             <constraint firstAttribute="height" constant="35" id="q8L-Fl-GhV"/>
                                         </constraints>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Yc-kE-oOJ">
+                                        <rect key="frame" x="0.0" y="39" width="375" height="1"/>
+                                        <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="95o-kh-30I"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="9di-J7-YHS"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="19m-j0-JSv" firstAttribute="centerX" secondItem="BHJ-ah-r3x" secondAttribute="centerX" id="2HG-6T-JP1"/>
+                                    <constraint firstAttribute="bottom" secondItem="9Yc-kE-oOJ" secondAttribute="bottom" id="6Gq-KU-xuG"/>
                                     <constraint firstItem="19m-j0-JSv" firstAttribute="centerY" secondItem="BHJ-ah-r3x" secondAttribute="centerY" id="LMt-ab-sjZ"/>
+                                    <constraint firstItem="9Yc-kE-oOJ" firstAttribute="leading" secondItem="05B-9o-zae" secondAttribute="leading" id="OaO-0B-IG6"/>
                                     <constraint firstAttribute="height" constant="40" id="UwU-i0-UHp"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Yc-kE-oOJ" secondAttribute="trailing" id="bbx-Fb-q58"/>
                                     <constraint firstItem="BHJ-ah-r3x" firstAttribute="top" secondItem="05B-9o-zae" secondAttribute="top" constant="12" id="hYY-W6-b81"/>
                                     <constraint firstAttribute="trailing" secondItem="BHJ-ah-r3x" secondAttribute="trailing" constant="29" id="kNV-RZ-uPN"/>
                                 </constraints>
@@ -3094,6 +3109,8 @@
                         <outlet property="segCtrlCarrito" destination="Vp5-hL-BgZ" id="fpo-CP-tHs"/>
                         <outlet property="tableProductosServicios" destination="i5o-FR-nhy" id="CR9-vN-qMx"/>
                         <outlet property="viewMensaje" destination="cGp-be-x6G" id="Gvd-y6-TF2"/>
+                        <segue destination="OrV-0p-8J0" kind="presentation" identifier="publicacionProductoDesdeVistaCarrito" id="d72-8e-bX5"/>
+                        <segue destination="evv-T1-4Jo" kind="presentation" identifier="publicacionServicioDesdeVistaCarrito" id="ccS-eF-KMJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYa-6e-6Mz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4243,6 +4260,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="JyH-cG-Wxu"/>
                                     <barButtonItem image="btnNoFavorito" id="15h-Bu-l8U">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="marcarComoFavorito:" destination="evv-T1-4Jo" id="rpw-UZ-FIH"/>
+                                        </connections>
                                     </barButtonItem>
                                 </items>
                                 <color key="barTintColor" red="0.0" green="0.75686274509999996" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -4640,6 +4660,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="barItemFavorito" destination="15h-Bu-l8U" id="VXF-jo-Zfc"/>
                         <outlet property="btnCarrito" destination="hHQ-Pg-hSA" id="di1-RE-F2O"/>
                         <outlet property="btnComprar" destination="xtD-7Z-7h7" id="Fmz-zF-bgA"/>
                         <outlet property="btnPreguntar" destination="Al5-vU-szc" id="QD1-fE-tdf"/>
@@ -8321,19 +8342,19 @@
         <segue reference="8j2-lp-SYU"/>
         <segue reference="cT9-T2-yqT"/>
         <segue reference="UlJ-My-ATf"/>
-        <segue reference="SxA-UP-4VO"/>
-        <segue reference="oQN-Js-Es1"/>
-        <segue reference="wJh-es-f6y"/>
-        <segue reference="ceK-EH-2VH"/>
-        <segue reference="5AM-1p-jx9"/>
-        <segue reference="rzp-TS-BC7"/>
+        <segue reference="wv9-fk-FfY"/>
         <segue reference="g9o-0N-P4D"/>
-        <segue reference="bVH-Q1-m3n"/>
-        <segue reference="ebI-ph-1Ok"/>
+        <segue reference="6DQ-fI-DhW"/>
+        <segue reference="ccS-eF-KMJ"/>
+        <segue reference="d72-8e-bX5"/>
         <segue reference="B7O-E2-n1O"/>
+        <segue reference="Sxi-cS-EGb"/>
         <segue reference="ZfC-qD-0SX"/>
         <segue reference="pQ7-FT-sEN"/>
+        <segue reference="ceK-EH-2VH"/>
         <segue reference="l7r-99-OB3"/>
         <segue reference="k7m-qH-c1t"/>
+        <segue reference="oQN-Js-Es1"/>
+        <segue reference="wJh-es-f6y"/>
     </inferredMetricsTieBreakers>
 </document>
