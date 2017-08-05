@@ -22,6 +22,8 @@
 		840B1B581F3594AD00423832 /* FavoritoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B1B551F3594AD00423832 /* FavoritoTableViewCell.swift */; };
 		840B1B591F3594AD00423832 /* FavoritoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B1B561F3594AD00423832 /* FavoritoTableViewCell.xib */; };
 		840B1B5A1F3594AD00423832 /* FavoritoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B1B561F3594AD00423832 /* FavoritoTableViewCell.xib */; };
+		840B1B5D1F36612500423832 /* Oferente.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840B1B5B1F36612500423832 /* Oferente.storyboard */; };
+		840B1B5E1F36612500423832 /* Oferente.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840B1B5B1F36612500423832 /* Oferente.storyboard */; };
 		840BD1811ED1339500AAD2AE /* DetallePublicacionOferenteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BD1801ED1339500AAD2AE /* DetallePublicacionOferenteViewController.swift */; };
 		840BD1821ED1339600AAD2AE /* DetallePublicacionOferenteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BD1801ED1339500AAD2AE /* DetallePublicacionOferenteViewController.swift */; };
 		840BD1841ED259AE00AAD2AE /* DestacarPublicacionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840BD1831ED259AE00AAD2AE /* DestacarPublicacionViewController.swift */; };
@@ -205,6 +207,7 @@
 		840B1B4F1F34217600423832 /* AgendarServicioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendarServicioViewController.swift; sourceTree = "<group>"; };
 		840B1B551F3594AD00423832 /* FavoritoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritoTableViewCell.swift; sourceTree = "<group>"; };
 		840B1B561F3594AD00423832 /* FavoritoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritoTableViewCell.xib; sourceTree = "<group>"; };
+		840B1B5C1F36612500423832 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Oferente.storyboard; sourceTree = "<group>"; };
 		840BD1801ED1339500AAD2AE /* DetallePublicacionOferenteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetallePublicacionOferenteViewController.swift; sourceTree = "<group>"; };
 		840BD1831ED259AE00AAD2AE /* DestacarPublicacionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestacarPublicacionViewController.swift; sourceTree = "<group>"; };
 		8410A77A1F1870CE0069912F /* PublicacionesPorCategoriaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicacionesPorCategoriaViewController.swift; sourceTree = "<group>"; };
@@ -563,6 +566,7 @@
 				84F4FA5C1EAA9BB000F3E69A /* Oferente */,
 				84D5AC071EE7A61600A18D7E /* Usuario */,
 				84F4FA4E1EAA955900F3E69A /* Main.storyboard */,
+				840B1B5B1F36612500423832 /* Oferente.storyboard */,
 				84F4FA511EAA955900F3E69A /* Assets.xcassets */,
 				84F4FA531EAA955900F3E69A /* LaunchScreen.storyboard */,
 				84F4FA561EAA955900F3E69A /* Info.plist */,
@@ -728,6 +732,7 @@
 				84A3E1D21EC4335B0013E4DD /* PublicacionTableViewCell.xib in Resources */,
 				84F4FA551EAA955900F3E69A /* LaunchScreen.storyboard in Resources */,
 				847FDC111ED34029002F9530 /* DetalleEstandarTableViewCell.xib in Resources */,
+				840B1B5D1F36612500423832 /* Oferente.storyboard in Resources */,
 				847838CF1F1699EC006A41F8 /* PublicacionCollectionViewCell.xib in Resources */,
 				840B1B3C1F339B2900423832 /* ResenaTableViewCell.xib in Resources */,
 				847FDC171ED3469F002F9530 /* DetalleHorarioTableViewCell.xib in Resources */,
@@ -763,6 +768,7 @@
 				847838D01F1699EC006A41F8 /* PublicacionCollectionViewCell.xib in Resources */,
 				84A3E1DA1EC66EA80013E4DD /* CategoriaCollectionViewCell.xib in Resources */,
 				8451A38E1EFB7A6200B59E46 /* UbicacionTableViewCell.xib in Resources */,
+				840B1B5E1F36612500423832 /* Oferente.storyboard in Resources */,
 				847FDC181ED3469F002F9530 /* DetalleHorarioTableViewCell.xib in Resources */,
 				847FDC121ED34029002F9530 /* DetalleEstandarTableViewCell.xib in Resources */,
 				847FDC2E1ED54336002F9530 /* Media.xcassets in Resources */,
@@ -1020,6 +1026,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		840B1B5B1F36612500423832 /* Oferente.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				840B1B5C1F36612500423832 /* Base */,
+			);
+			name = Oferente.storyboard;
+			sourceTree = "<group>";
+		};
 		84F4FA4E1EAA955900F3E69A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
