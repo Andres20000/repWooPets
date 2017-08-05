@@ -41,6 +41,14 @@ class RegistroUsuarioTresViewController: UIViewController, UITextFieldDelegate
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        if Comando.validarTipoIngreso()
+        {
+            imgMailFB.image = UIImage(named: "imgFbOk")
+        }else
+        {
+            imgMailFB.image = UIImage(named: "imgMailOk")
+        }
     }
     
     @IBAction func cambiarView(_ sender: Any)

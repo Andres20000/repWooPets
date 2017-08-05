@@ -10,6 +10,9 @@ import UIKit
 
 class CarritoComprasViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
+    let model = Modelo.sharedInstance
+    let modelOferente = ModeloOferente.sharedInstance
+    
     @IBOutlet var segCtrlCarrito: UISegmentedControl!
     
     @IBOutlet var viewMensaje: UIView!
@@ -39,29 +42,11 @@ class CarritoComprasViewController: UIViewController, UITableViewDelegate, UITab
         segCtrlCarrito.layer.borderWidth = 1.0
         segCtrlCarrito.layer.borderColor = UIColor.white.cgColor
         
-        switch segCtrlCarrito.selectedSegmentIndex
-        {
-        case 0:
-            viewMensaje.isHidden = false
-            imgMensaje.image = UIImage(named: "imgCarritoVacio")
-            lblMensaje.text = "Actualmente no tienes ningún producto y/o servicio en tu carrito."
-        case 1:
-            viewMensaje.isHidden = false
-            imgMensaje.image = UIImage(named: "imgCarritoVacio")
-            lblMensaje.text = "Actualmente no tienes ningún producto y/o servicio en tus compras."
-        case 2:
-            viewMensaje.isHidden = false
-            imgMensaje.image = UIImage(named: "imgFavoritoVacio")
-            lblMensaje.text = "Actualmente no tienes productos y/o servicios favoritos."
-        default:
-            break
-        }
-        
-        let nib = UINib(nibName: "AlertaTableViewCell", bundle: nil)
-        tableProductosServicios.register(nib, forCellReuseIdentifier: "alertaTableViewCell")
+        let nib = UINib(nibName: "FavoritoTableViewCell", bundle: nil)
+        tableProductosServicios.register(nib, forCellReuseIdentifier: "favoritoTableViewCell")
     }
     
-    @IBAction func indexChanged(_ sender: AnyObject)
+    func refrescarVista(_ notification: Notification)
     {
         switch segCtrlCarrito.selectedSegmentIndex
         {
@@ -74,58 +59,122 @@ class CarritoComprasViewController: UIViewController, UITableViewDelegate, UITab
             imgMensaje.image = UIImage(named: "imgCarritoVacio")
             lblMensaje.text = "Actualmente no tienes productos y/o servicios en tus compras."
         case 2:
-            viewMensaje.isHidden = false
-            imgMensaje.image = UIImage(named: "imgFavoritoVacio")
-            lblMensaje.text = "Actualmente no tienes productos y/o servicios favoritos."
+            if model.publicacionesFavoritas.count == 0
+            {
+                viewMensaje.isHidden = false
+                imgMensaje.image = UIImage(named: "imgFavoritoVacio")
+                lblMensaje.text = "Actualmente no tienes productos y/o servicios favoritos."
+            } else
+            {
+                viewMensaje.isHidden = true
+            }
         default:
             break
         }
+        
+        tableProductosServicios.reloadData()
+    }
+    
+    @IBAction func indexChanged(_ sender: AnyObject)
+    {
+        Comando.getPublicaciones()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CarritoComprasViewController.refrescarVista(_:)), name:NSNotification.Name(rawValue:"cargoPublicaciones"), object: nil)
     }
     
     // #pragma mark - Table View
     
     func numberOfSections(in tableView: UITableView) -> Int
     {
-        /*if model.alertasMascotaSeleccionada.count > 0
-         {
-         Comando.init().EmptyMessage("", tableView: tableResenas)
-         
-         tableResenas.separatorStyle = .singleLine
-         
-         return 1
-         } else
-         {
-         Comando.init().EmptyMessage("Actualmente no hay opiniones de otros compradores", tableView: tableResenas)
-         
-         tableResenas.separatorStyle = .none
-         
-         return 1
-         }*/
+        switch segCtrlCarrito.selectedSegmentIndex
+        {
+        case 0:
+            tableProductosServicios.separatorStyle = .none
+            return 0
+        case 1:
+            tableProductosServicios.separatorStyle = .none
+            return 0
+        case 2:
+            if model.publicacionesFavoritas.count == 0
+            {
+                tableProductosServicios.separatorStyle = .none
+                return 0
+            } else
+            {
+                tableProductosServicios.separatorStyle = .singleLine
+                return 1
+            }
+        default:
+            break
+        }
+        
         tableProductosServicios.separatorStyle = .none
         return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        //return model.alertasMascotaSeleccionada.count
+        switch segCtrlCarrito.selectedSegmentIndex
+        {
+        case 0:
+            return 0
+        case 1:
+            return 0
+        case 2:
+            return model.publicacionesFavoritas.count
+        default:
+            break
+        }
+        
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "alertaTableViewCell")  as! AlertaTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "favoritoTableViewCell")  as! FavoritoTableViewCell
+        
+        if let amountString = model.publicacionesFavoritas[indexPath.row].precio?.currencyInputFormatting()
+        {
+            cell.lblPrecio.text = amountString
+        }
+        
+        cell.lblNombreProducto.text = model.publicacionesFavoritas[indexPath.row].nombre
+        
+        if (model.publicacionesFavoritas[indexPath.row].fotos?.count)! > 0
+        {
+            let path = "productos/" + (model.publicacionesFavoritas[indexPath.row].idPublicacion)! + "/" + (model.publicacionesFavoritas[indexPath.row].fotos?[0].nombreFoto)!
+            
+            cell.imgProducto.loadImageUsingCacheWithUrlString(pathString: path)
+        }
         
         return cell;
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        print("Seleccionada")
+        modelOferente.publicacion = model.publicacionesFavoritas[indexPath.row]
+        
+        if modelOferente.publicacion.servicio!
+        {
+            self.performSegue(withIdentifier: "publicacionServicioDesdeVistaCarrito", sender: self)
+        } else
+        {
+            self.performSegue(withIdentifier: "publicacionProductoDesdeVistaCarrito", sender: self)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 85
+        return 100
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        Comando.getPublicaciones()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CarritoComprasViewController.refrescarVista(_:)), name:NSNotification.Name(rawValue:"cargoPublicaciones"), object: nil)
     }
     
     override func didReceiveMemoryWarning()

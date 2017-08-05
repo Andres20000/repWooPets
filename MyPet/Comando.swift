@@ -17,6 +17,9 @@ class Comando
     class func getPublicaciones()
     {
         let model  = Modelo.sharedInstance
+        let modelUsuario = ModeloUsuario.sharedInstance
+        
+        model.publicacionesFavoritas.removeAll()
         
         model.publicacionesDestacadas.removeAll()
         
@@ -191,6 +194,26 @@ class Comando
                 
                 if datosPublicacion.activo!
                 {
+                    if modelUsuario.usuario.count != 0
+                    {
+                        if modelUsuario.usuario[0].datosComplementarios?.count != 0
+                        {
+                            if modelUsuario.usuario[0].datosComplementarios?[0].favoritos?.count != 0
+                            {
+                                for favorito in (modelUsuario.usuario[0].datosComplementarios?[0].favoritos)!
+                                {
+                                    if favorito.idPublicacion == datosPublicacion.idPublicacion
+                                    {
+                                        if favorito.activo!
+                                        {
+                                            model.publicacionesFavoritas.append(datosPublicacion)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
                     model.publicacionesPopulares.append(datosPublicacion)
                     
                     if datosPublicacion.destacado!
@@ -699,6 +722,36 @@ class Comando
             NotificationCenter.default.post(name: Notification.Name(rawValue: "cargoFrecuenciasRecordatorio"), object: nil)
             
         });
+    }
+    
+    // Validar ingreso (FB/Correo)
+    
+    class func validarTipoIngreso() -> Bool
+    {
+        let user = FIRAuth.auth()?.currentUser
+        
+        if user != nil
+        {
+            var provider = ""
+            
+            for profile in user!.providerData
+            {
+                let providerID = profile.providerID
+                let uid = profile.uid;  // Provider-specific UID
+                provider = profile.providerID
+            }
+            
+            if provider == "facebook.com"
+            {
+                return true
+            }
+            else
+            {
+                return false
+            }
+        }
+        
+        return false
     }
     
     // Datos Sistema

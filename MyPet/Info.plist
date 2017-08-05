@@ -24,6 +24,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) desea usar la cámara para que Ud tome una foto y usar dentro de la App.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>$(PRODUCT_NAME) desea usar tus contactos para facilitar compartir las publicaciones.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) desea usar la galería de fotos para que Ud seleccione una foto y usar dentro de la App.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

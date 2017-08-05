@@ -8,19 +8,20 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
 
-class InicioSesionUsuarioViewController: UIViewController, UITextFieldDelegate
+class InicioSesionUsuarioViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate
 {
     var model  = ModeloUsuario.sharedInstance
     
     // This constraint ties an element at zero points from the top layout guide
     @IBOutlet var spaceTopLayoutConstraint: NSLayoutConstraint?
-    @IBOutlet var leadingSpaceLayoutConstraint: NSLayoutConstraint?
     
     @IBOutlet var txtCorreo: UITextField!
     @IBOutlet var txtContrasena: UITextField!
     @IBOutlet var btnInicioSesion: UIButton!
-    @IBOutlet var btnInicioSesionFB: UIButton!
+    @IBOutlet weak var botonFacebook: FBSDKLoginButton!
+    //@IBOutlet var btnInicioSesionFB: UIButton!
     @IBOutlet var btnRegistro: UIButton!
     
     var sizeFont : CGFloat = 0.0
@@ -40,13 +41,18 @@ class InicioSesionUsuarioViewController: UIViewController, UITextFieldDelegate
         FIRAuth.auth()?.addStateDidChangeListener { auth, user in
             
             if user != nil {
-                
                 ComandoUsuario.getUsuario(uid: (user?.uid)!)
                 
                 NotificationCenter.default.addObserver(self, selector: #selector(InicioSesionUsuarioViewController.verificarUsuario(_:)), name:NSNotification.Name(rawValue:"cargoUsuario"), object: nil)
-                
+            }
+            else {
+                print("Registro: Con usuario en NILLL")
+                self.botonFacebook.readPermissions = ["public_profile", "email" ]
+                self.botonFacebook.delegate = self
+                self.botonFacebook.isHidden = false
             }
         }
+        
     }
     
     func verificarUsuario(_ notification: Notification)
@@ -94,9 +100,6 @@ class InicioSesionUsuarioViewController: UIViewController, UITextFieldDelegate
                     
                 }
             })
-        } else
-        {
-            print("inicio sesión por FB")
         }
     }
     
@@ -121,6 +124,55 @@ class InicioSesionUsuarioViewController: UIViewController, UITextFieldDelegate
         }
     }
     
+    // #pragma mark - FBSDKLoginButtonDelegate Methods
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!)
+    {
+        self.botonFacebook.isHidden = true
+        
+        if let error = error {
+            print(error.localizedDescription)
+            self.botonFacebook.isHidden = false
+            return
+        }
+        
+        if  result.isCancelled {
+            self.botonFacebook.isHidden = false
+            return
+        }
+        
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        
+        var email = ""
+        
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            if let error = error {
+                self.mostrarAlerta(titulo: "Registro", mensaje: "No se ha podido hacer el registro. La dirección de correo electrónico ya está en uso por otra cuenta.")
+                print(error.localizedDescription)
+                return
+            }
+            
+            let testMail:String?
+            
+            if user?.email == nil {
+                
+                testMail = user?.providerData[0].email
+                
+                if testMail != nil {
+                    email = testMail!
+                }
+            }
+            
+            ComandoUsuario.registrarUsuario(uid: (user?.uid)!, correo: email)
+        }
+    }
+    
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!)
+    {
+        print("Se Deslogeo \(loginButton)")
+    }
+    
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
@@ -141,13 +193,12 @@ class InicioSesionUsuarioViewController: UIViewController, UITextFieldDelegate
         
         btnInicioSesion.layer.cornerRadius = 10.0
         
-        btnInicioSesionFB.layer.cornerRadius = 10.0
+        //btnInicioSesionFB.layer.cornerRadius = 10.0
         
         if DeviceType.IS_IPHONE_5
         {
             sizeFont = 14.0
             self.spaceTopLayoutConstraint?.constant = 25.0
-            self.leadingSpaceLayoutConstraint?.constant = 30.0
         }else
         {
             sizeFont = 17.0

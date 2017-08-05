@@ -84,12 +84,12 @@ class PublicacionesPorCategoriaViewController: UIViewController, UICollectionVie
         if model.publicacionesPorCategoriaPorMascota.count == 0
         {
             lblAvisoPublicacionesMascota.isHidden = false
-            lblTituloPublicacionesGeneral.text = "     Productos en esta categoría"
+            lblTituloPublicacionesGeneral.text = "   Productos en esta categoría"
             
         } else
         {
             lblAvisoPublicacionesMascota.isHidden = true
-            lblTituloPublicacionesGeneral.text = "     Más en esta categoría"
+            lblTituloPublicacionesGeneral.text = "   Más en esta categoría"
         }
         
         let flowLayout2:UICollectionViewFlowLayout = UICollectionViewFlowLayout()

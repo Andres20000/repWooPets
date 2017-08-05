@@ -7,16 +7,22 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class PublicacionServicioViewController: UIViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource
 {
+    let model = ModeloUsuario.sharedInstance
     let modelOferente = ModeloOferente.sharedInstance
+    
+    let  user = FIRAuth.auth()?.currentUser
     
     // This constraint ties an element at zero points from the top layout guide
     @IBOutlet var spaceLeadingLayoutConstraint: NSLayoutConstraint?
     @IBOutlet var spaceLeadingBtnPreguntarLayoutConstraint: NSLayoutConstraint?
     
     @IBOutlet var scrollContent: UIScrollView!
+    
+    @IBOutlet var barItemFavorito: UIBarButtonItem!
     
     var pageViewController:UIPageViewController!
     
@@ -74,9 +80,112 @@ class PublicacionServicioViewController: UIViewController, UIPageViewControllerD
         btnPreguntar.layer.cornerRadius = 10.0
     }
 
+    func refrescarVista(_ notification: Notification)
+    {
+        if model.usuario.count != 0
+        {
+            if model.usuario[0].datosComplementarios?.count != 0
+            {
+                if model.usuario[0].datosComplementarios?[0].favoritos?.count != 0
+                {
+                    var activo:Bool = false
+                    
+                    for favorito in (model.usuario[0].datosComplementarios?[0].favoritos)!
+                    {
+                        if favorito.idPublicacion == modelOferente.publicacion.idPublicacion!
+                        {
+                            activo = true
+                        }
+                    }
+                    
+                    if activo
+                    {
+                        barItemFavorito.image = UIImage(named: "btnFavorito")?.withRenderingMode(.alwaysOriginal)
+                    } else
+                    {
+                        barItemFavorito.image = UIImage(named: "btnNoFavorito")?.withRenderingMode(.alwaysOriginal)
+                    }
+                    
+                }else
+                {
+                    barItemFavorito.image = UIImage(named: "btnNoFavorito")?.withRenderingMode(.alwaysOriginal)
+                }
+            } else
+            {
+                barItemFavorito.image = UIImage(named: "btnNoFavorito")?.withRenderingMode(.alwaysOriginal)
+            }
+        }else
+        {
+            barItemFavorito.image = UIImage(named: "btnNoFavorito")?.withRenderingMode(.alwaysOriginal)
+        }
+    }
+    
+    @IBAction func marcarComoFavorito(_ sender: Any)
+    {
+        if model.usuario.count == 0
+        {
+            self.mostrarAlerta(titulo: "Lo sentimos", mensaje: "Para poder marcarlo como Favorito debes estar registrado")
+        }else
+        {
+            if model.usuario[0].datosComplementarios?.count == 0
+            {
+                self.mostrarAlerta(titulo: "Lo sentimos", mensaje: "Para poder marcarlo como Favorito debes estar completamente registrado")
+            } else
+            {
+                if model.usuario[0].datosComplementarios?[0].favoritos?.count == 0
+                {
+                    ComandoUsuario.activarDesactivarFavorito(uid: (user?.uid)!, idPublicacion: modelOferente.publicacion.idPublicacion!, activo: true)
+                }else
+                {
+                    var activo:Bool = true
+                    
+                    for favorito in (model.usuario[0].datosComplementarios?[0].favoritos)!
+                    {
+                        if favorito.idPublicacion == modelOferente.publicacion.idPublicacion!
+                        {
+                            if favorito.activo!
+                            {
+                                activo = false
+                            } else
+                            {
+                                activo = true
+                            }
+                        }
+                    }
+                    
+                    if activo
+                    {
+                        ComandoUsuario.activarDesactivarFavorito(uid: (user?.uid)!, idPublicacion: modelOferente.publicacion.idPublicacion!, activo: true)
+                    } else
+                    {
+                        ComandoUsuario.activarDesactivarFavorito(uid: (user?.uid)!, idPublicacion: modelOferente.publicacion.idPublicacion!, activo: false)
+                    }
+                }
+            }
+        }
+        
+        if user?.uid != nil
+        {
+            ComandoUsuario.getUsuario(uid: (user?.uid)!)
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(PublicacionProductoViewController.refrescarVista(_:)), name:NSNotification.Name(rawValue:"cargoUsuario"), object: nil)
+    }
+    
     @IBAction func verResena(_ sender: Any)
     {
         self.performSegue(withIdentifier: "resenaCompradoresDesdePublicacionServicio", sender: self)
+    }
+    
+    @IBAction func agendarServicio(_ sender: Any)
+    {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight
+        view.window!.layer.add(transition, forKey: kCATransition)
+        
+        self.performSegue(withIdentifier: "agendarDesdePublicacionServicio", sender: self)
     }
     
     @IBAction func verPreguntas(_ sender: Any)
@@ -123,6 +232,13 @@ class PublicacionServicioViewController: UIViewController, UIPageViewControllerD
         ComandoOferente.getOferente(uid: modelOferente.publicacion.idOferente)
         
         NotificationCenter.default.addObserver(self, selector: #selector(PublicacionServicioViewController.hacerMontaje(_:)), name:NSNotification.Name(rawValue:"cargoOferente"), object: nil)
+        
+        if user?.uid != nil
+        {
+            ComandoUsuario.getUsuario(uid: (user?.uid)!)
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(PublicacionServicioViewController.refrescarVista(_:)), name:NSNotification.Name(rawValue:"cargoUsuario"), object: nil)
     }
     
     override func didReceiveMemoryWarning()
@@ -250,5 +366,20 @@ class PublicacionServicioViewController: UIViewController, UIPageViewControllerD
     func presentationIndex(for pageViewController: UIPageViewController) -> Int
     {
         return 0
+    }
+    
+    // Validación de datos
+    
+    func mostrarAlerta(titulo:String, mensaje:String)
+    {
+        let alerta = UIAlertController(title: titulo, message: mensaje, preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            
+            return
+        }
+        
+        alerta.addAction(OKAction)
+        present(alerta, animated: true, completion: { return })
     }
 }

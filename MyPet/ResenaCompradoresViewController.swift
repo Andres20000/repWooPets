@@ -39,8 +39,8 @@ class ResenaCompradoresViewController: UIViewController, UITableViewDelegate, UI
         self.floatRatingView.halfRatings = true
         self.floatRatingView.floatRatings = false
         
-        let nib = UINib(nibName: "AlertaTableViewCell", bundle: nil)
-        tableResenas.register(nib, forCellReuseIdentifier: "alertaTableViewCell")
+        let nib = UINib(nibName: "ResenaTableViewCell", bundle: nil)
+        tableResenas.register(nib, forCellReuseIdentifier: "resenaTableViewCell")
     }
 
     // #pragma mark - Table View
@@ -77,7 +77,7 @@ class ResenaCompradoresViewController: UIViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "alertaTableViewCell")  as! AlertaTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "resenaTableViewCell")  as! ResenaTableViewCell
         
         return cell;
     }
@@ -89,7 +89,7 @@ class ResenaCompradoresViewController: UIViewController, UITableViewDelegate, UI
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 85
+        return 120
     }
     
     override func didReceiveMemoryWarning()
