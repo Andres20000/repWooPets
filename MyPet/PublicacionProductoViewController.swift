@@ -169,7 +169,10 @@ class PublicacionProductoViewController: UIViewController, UIPageViewControllerD
             }
         }
         
-        ComandoUsuario.getUsuario(uid: (user?.uid)!)
+        if user?.uid != nil
+        {
+            ComandoUsuario.getUsuario(uid: (user?.uid)!)
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(PublicacionProductoViewController.refrescarVista(_:)), name:NSNotification.Name(rawValue:"cargoUsuario"), object: nil)
     }
@@ -224,7 +227,10 @@ class PublicacionProductoViewController: UIViewController, UIPageViewControllerD
         
         NotificationCenter.default.addObserver(self, selector: #selector(PublicacionProductoViewController.hacerMontaje(_:)), name:NSNotification.Name(rawValue:"cargoOferente"), object: nil)
         
-        ComandoUsuario.getUsuario(uid: (user?.uid)!)
+        if user?.uid != nil
+        {
+            ComandoUsuario.getUsuario(uid: (user?.uid)!)
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(PublicacionProductoViewController.refrescarVista(_:)), name:NSNotification.Name(rawValue:"cargoUsuario"), object: nil)
     }
