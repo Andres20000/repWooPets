@@ -16,7 +16,6 @@ class RegistroUsuarioViewController: UIViewController, UITextFieldDelegate, FBSD
 {
     // This constraint ties an element at zero points from the top layout guide
     @IBOutlet var spaceTopLayoutConstraint: NSLayoutConstraint?
-    @IBOutlet var leadingSpaceLayoutConstraint: NSLayoutConstraint?
     
     @IBOutlet var txtCorreo: UITextField!
     @IBOutlet var txtContrasena: UITextField!
@@ -49,7 +48,6 @@ class RegistroUsuarioViewController: UIViewController, UITextFieldDelegate, FBSD
                 self.botonFacebook.readPermissions = ["public_profile", "email" ]
                 self.botonFacebook.delegate = self
                 self.botonFacebook.isHidden = false
-                
             }
         }
     }
@@ -132,10 +130,9 @@ class RegistroUsuarioViewController: UIViewController, UITextFieldDelegate, FBSD
         }
     }
     
-    
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!)
     {
-        print("Se Deslogeo")
+        print("Se Deslogeo \(loginButton)")
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -164,7 +161,6 @@ class RegistroUsuarioViewController: UIViewController, UITextFieldDelegate, FBSD
         {
             sizeFont = 14.0
             self.spaceTopLayoutConstraint?.constant = 5.0
-            self.leadingSpaceLayoutConstraint?.constant = 30.0
         }else
         {
             sizeFont = 17.0

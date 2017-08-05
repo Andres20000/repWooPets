@@ -3235,19 +3235,15 @@
                                     <constraint firstAttribute="height" constant="1" id="1Dj-kf-hMJ"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZU-bs-eld">
-                                <rect key="frame" x="30" y="557" width="315" height="40"/>
-                                <color key="backgroundColor" red="0.13725490196078433" green="0.34901960784313724" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZU-bs-eld" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="47" y="557" width="281" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="8tW-Rr-4l9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="     Continuar con Facebook">
+                                <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="iniciarSesionUsuario:" destination="bgN-3V-sHw" eventType="touchUpInside" id="nXG-lW-Vej"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L42-go-LaL">
                                 <rect key="frame" x="0.0" y="622" width="375" height="45"/>
@@ -3262,13 +3258,6 @@
                                     <segue destination="H8R-Je-v3A" kind="presentation" id="wJh-es-f6y"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgFb" translatesAutoresizingMaskIntoConstraints="NO" id="8FQ-vs-MGX">
-                                <rect key="frame" x="72" y="566" width="22" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="Ggo-o2-tYO"/>
-                                    <constraint firstAttribute="width" constant="22" id="HG2-1c-hIG"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -3278,6 +3267,7 @@
                             <constraint firstItem="y2B-8S-y7z" firstAttribute="leading" secondItem="1yK-c2-Kbj" secondAttribute="leadingMargin" id="35R-tt-jjI"/>
                             <constraint firstItem="I14-gW-c41" firstAttribute="leading" secondItem="1yK-c2-Kbj" secondAttribute="leading" id="5O8-02-UGV"/>
                             <constraint firstItem="I14-gW-c41" firstAttribute="top" secondItem="XSj-hC-5hG" secondAttribute="bottom" id="5ak-UE-DlV"/>
+                            <constraint firstItem="DZU-bs-eld" firstAttribute="centerX" secondItem="1yK-c2-Kbj" secondAttribute="centerX" id="8Ty-9a-jEu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="C4a-B5-No8" secondAttribute="trailing" constant="14" id="9Mm-65-odh"/>
                             <constraint firstItem="bJC-Ac-pbR" firstAttribute="leading" secondItem="1yK-c2-Kbj" secondAttribute="leading" constant="4" id="Jqc-By-a0U"/>
                             <constraint firstItem="TNE-v7-b8w" firstAttribute="height" secondItem="1yK-c2-Kbj" secondAttribute="height" multiplier="0.278" id="Jxp-52-Zb4"/>
@@ -3287,7 +3277,6 @@
                             <constraint firstItem="TNE-v7-b8w" firstAttribute="centerX" secondItem="1yK-c2-Kbj" secondAttribute="centerX" id="RVi-fz-MEj"/>
                             <constraint firstItem="bJC-Ac-pbR" firstAttribute="top" secondItem="XSj-hC-5hG" secondAttribute="bottom" constant="10" id="Sip-EY-2Z7"/>
                             <constraint firstItem="z1L-Tf-vNc" firstAttribute="top" secondItem="HPH-rq-0wO" secondAttribute="bottom" constant="28" id="SoE-Pp-ao9"/>
-                            <constraint firstItem="8FQ-vs-MGX" firstAttribute="leading" secondItem="1yK-c2-Kbj" secondAttribute="leadingMargin" constant="56" id="Tc7-ag-u9E"/>
                             <constraint firstItem="ZTx-Hq-Yyg" firstAttribute="top" secondItem="L42-go-LaL" secondAttribute="bottom" id="WNg-GG-hUX"/>
                             <constraint firstItem="swU-ra-WuD" firstAttribute="leading" secondItem="1yK-c2-Kbj" secondAttribute="leadingMargin" constant="14" id="alu-fM-u0U"/>
                             <constraint firstItem="swU-ra-WuD" firstAttribute="top" secondItem="HPH-rq-0wO" secondAttribute="bottom" constant="38" id="ayt-u0-b5a"/>
@@ -3299,15 +3288,13 @@
                             <constraint firstItem="TNE-v7-b8w" firstAttribute="width" secondItem="1yK-c2-Kbj" secondAttribute="width" multiplier="0.494" id="jAF-qh-OaT"/>
                             <constraint firstItem="C4a-B5-No8" firstAttribute="leading" secondItem="1yK-c2-Kbj" secondAttribute="leadingMargin" constant="14" id="kHu-Ba-Vug"/>
                             <constraint firstItem="C4a-B5-No8" firstAttribute="top" secondItem="E6z-Au-lHX" secondAttribute="bottom" constant="8" id="l0s-LS-ap4"/>
-                            <constraint firstItem="DZU-bs-eld" firstAttribute="leading" secondItem="1yK-c2-Kbj" secondAttribute="leadingMargin" constant="14" id="lDz-ex-Fnm"/>
                             <constraint firstItem="y2B-8S-y7z" firstAttribute="top" secondItem="XSj-hC-5hG" secondAttribute="bottom" constant="20" id="mEH-u3-4SG"/>
+                            <constraint firstItem="DZU-bs-eld" firstAttribute="width" secondItem="1yK-c2-Kbj" secondAttribute="width" multiplier="0.75" id="nAc-W7-Ed8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6c0-xe-wIv" secondAttribute="trailing" constant="14" id="nuW-jr-ky0"/>
-                            <constraint firstItem="8FQ-vs-MGX" firstAttribute="top" secondItem="swU-ra-WuD" secondAttribute="bottom" constant="48" id="p4f-M8-KsE"/>
                             <constraint firstItem="L42-go-LaL" firstAttribute="leading" secondItem="1yK-c2-Kbj" secondAttribute="leading" id="pz1-RE-j8V"/>
                             <constraint firstItem="HPH-rq-0wO" firstAttribute="leading" secondItem="1yK-c2-Kbj" secondAttribute="leadingMargin" constant="14" id="qwg-iI-jzX"/>
                             <constraint firstItem="ZTx-Hq-Yyg" firstAttribute="top" secondItem="I14-gW-c41" secondAttribute="bottom" id="tVP-wO-ZBM"/>
                             <constraint firstItem="9fk-Tc-KkR" firstAttribute="top" secondItem="TNE-v7-b8w" secondAttribute="bottom" constant="33.5" id="tXU-Ek-xWO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DZU-bs-eld" secondAttribute="trailing" constant="14" id="uNt-vE-dda"/>
                             <constraint firstAttribute="trailing" secondItem="L42-go-LaL" secondAttribute="trailing" id="umP-4r-nW4"/>
                             <constraint firstItem="HPH-rq-0wO" firstAttribute="top" secondItem="C4a-B5-No8" secondAttribute="bottom" constant="8" id="y4v-uN-2BP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HPH-rq-0wO" secondAttribute="trailing" constant="14" id="zm8-Jj-ZWz"/>
@@ -3316,10 +3303,9 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="botonFacebook" destination="DZU-bs-eld" id="p3U-LW-Hmt"/>
                         <outlet property="btnInicioSesion" destination="C4a-B5-No8" id="e1T-Zy-xrj"/>
-                        <outlet property="btnInicioSesionFB" destination="DZU-bs-eld" id="4Me-Qf-7qZ"/>
                         <outlet property="btnRegistro" destination="L42-go-LaL" id="7A9-9b-2xy"/>
-                        <outlet property="leadingSpaceLayoutConstraint" destination="Tc7-ag-u9E" id="d4G-5u-mDm"/>
                         <outlet property="spaceTopLayoutConstraint" destination="zsB-sn-sZe" id="htF-a0-QVM"/>
                         <outlet property="txtContrasena" destination="E6z-Au-lHX" id="Sf0-gc-Ir4"/>
                         <outlet property="txtCorreo" destination="9fk-Tc-KkR" id="SWi-Bk-Wmr"/>
@@ -8303,7 +8289,6 @@
         <image name="imgDinero" width="39" height="24"/>
         <image name="imgDireccion" width="19" height="19"/>
         <image name="imgEstrellaCompleta" width="23" height="23"/>
-        <image name="imgFb" width="22" height="22"/>
         <image name="imgLegal" width="30" height="30"/>
         <image name="imgMailOk" width="50" height="50"/>
         <image name="imgNoDireccion" width="29" height="29"/>
@@ -8336,15 +8321,15 @@
         <segue reference="8j2-lp-SYU"/>
         <segue reference="cT9-T2-yqT"/>
         <segue reference="UlJ-My-ATf"/>
-        <segue reference="SKH-9m-KS5"/>
+        <segue reference="SxA-UP-4VO"/>
+        <segue reference="oQN-Js-Es1"/>
+        <segue reference="wJh-es-f6y"/>
         <segue reference="ceK-EH-2VH"/>
         <segue reference="5AM-1p-jx9"/>
         <segue reference="rzp-TS-BC7"/>
-        <segue reference="A6W-wT-hwa"/>
         <segue reference="g9o-0N-P4D"/>
         <segue reference="bVH-Q1-m3n"/>
         <segue reference="ebI-ph-1Ok"/>
-        <segue reference="oQN-Js-Es1"/>
         <segue reference="B7O-E2-n1O"/>
         <segue reference="ZfC-qD-0SX"/>
         <segue reference="pQ7-FT-sEN"/>

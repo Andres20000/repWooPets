@@ -105,6 +105,24 @@ class ComandoUsuario
                     
                     datosComplementarios.documento = value?["documento"] as? String
                     
+                    if snap.hasChild("favoritos")
+                    {
+                        let snapFavoritos = snap.childSnapshot(forPath: "favoritos").value as! NSDictionary
+                        
+                        for (idFavorito, activo) in snapFavoritos
+                        {
+                            let favoritoUsuario = Favorito()
+                            
+                            favoritoUsuario.idPublicacion = idFavorito as? String
+                            favoritoUsuario.activo = activo as? Bool
+                            
+                            if favoritoUsuario.activo!
+                            {
+                                datosComplementarios.favoritos?.append(favoritoUsuario)
+                            }
+                        }
+                    }
+                    
                     if snap.hasChild("mascotas")
                     {
                         let snapMascotas = snap.childSnapshot(forPath: "mascotas").value as! NSDictionary
@@ -276,5 +294,11 @@ class ComandoUsuario
         let refHandle = FIRDatabase.database().reference().child("clientes/" + uid! + "/mascotas/" + idMascota! + "/alertas/" + alerta.idAlerta!)
         // Remove the post from the DB
         refHandle.removeValue()
+    }
+    
+    class func activarDesactivarFavorito(uid:String?, idPublicacion:String?, activo:Bool)
+    {
+        let refHandle = FIRDatabase.database().reference().child("clientes/" + uid! + "/favoritos")
+        refHandle.child("/\(idPublicacion)").setValue(activo)
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
 
 class MenuUsuarioViewController: UIViewController
 {
@@ -87,6 +88,13 @@ class MenuUsuarioViewController: UIViewController
     
     func cerrarSesion()
     {
+        print("Tipo: \(Comando.validarTipoIngreso())")
+        if Comando.validarTipoIngreso()
+        {
+            FBSDKAccessToken.setCurrent(nil)
+            print("Entra aquí al estar con FB")
+        }
+        
         model.usuario.removeAll()
         
         try! FIRAuth.auth()!.signOut()

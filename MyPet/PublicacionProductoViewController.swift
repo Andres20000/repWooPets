@@ -18,6 +18,8 @@ class PublicacionProductoViewController: UIViewController, UIPageViewControllerD
     
     @IBOutlet var scrollContent: UIScrollView!
     
+    @IBOutlet var barItemFavorito: UIBarButtonItem!
+    
     var pageViewController:UIPageViewController!
     
     @IBOutlet var lblNombre: UILabel!
@@ -79,6 +81,19 @@ class PublicacionProductoViewController: UIViewController, UIPageViewControllerD
         btnPreguntar.layer.cornerRadius = 10.0
     }
 
+    @IBAction func marcarComoFavorito(_ sender: Any)
+    {
+        if (model.usuario[0].datosComplementarios?.count)! == 0
+        {
+            self.mostrarAlerta(titulo: "Lo sentimos", mensaje: "Para poder marcarlo como Favorito debes estar registrado")
+        }else
+        {
+            if model.us {
+                <#code#>
+            }
+        }
+    }
+    
     @IBAction func verResena(_ sender: Any)
     {
         self.performSegue(withIdentifier: "resenaCompradoresDesdePublicacionProducto", sender: self)
@@ -255,6 +270,21 @@ class PublicacionProductoViewController: UIViewController, UIPageViewControllerD
     func presentationIndex(for pageViewController: UIPageViewController) -> Int
     {
         return 0
+    }
+    
+    // Validación de datos
+    
+    func mostrarAlerta(titulo:String, mensaje:String)
+    {
+        let alerta = UIAlertController(title: titulo, message: mensaje, preferredStyle: .alert)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            
+            return
+        }
+        
+        alerta.addAction(OKAction)
+        present(alerta, animated: true, completion: { return })
     }
 }
 

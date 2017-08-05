@@ -53,6 +53,7 @@ class Direccion
 class Favorito
 {
     var idPublicacion:String?  = ""
+    var activo:Bool?
 }
 
 class Mascota
