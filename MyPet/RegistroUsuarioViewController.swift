@@ -6,10 +6,13 @@
 //  Copyright © 2017 Jose Aguilar. All rights reserved.
 //
 
+//     Continuar con Facebook
+
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
 
-class RegistroUsuarioViewController: UIViewController, UITextFieldDelegate
+class RegistroUsuarioViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate
 {
     // This constraint ties an element at zero points from the top layout guide
     @IBOutlet var spaceTopLayoutConstraint: NSLayoutConstraint?
@@ -18,7 +21,8 @@ class RegistroUsuarioViewController: UIViewController, UITextFieldDelegate
     @IBOutlet var txtCorreo: UITextField!
     @IBOutlet var txtContrasena: UITextField!
     @IBOutlet var btnRegistro: UIButton!
-    @IBOutlet var btnRegistroFB: UIButton!
+    @IBOutlet weak var botonFacebook: FBSDKLoginButton!
+    //@IBOutlet var btnRegistroFB: UIButton!
     @IBOutlet var btnInicioSesion: UIButton!
     
     var sizeFont : CGFloat = 0.0
@@ -33,6 +37,21 @@ class RegistroUsuarioViewController: UIViewController, UITextFieldDelegate
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+            
+            if user != nil {
+                print("Registro: Con usuario listo")
+                self.performSegue(withIdentifier: "ingresoExitosoDesdeRegistroUsuario", sender: self)
+            }
+            else {
+                print("Registro: Con usuario en NILLL")
+                self.botonFacebook.readPermissions = ["public_profile", "email" ]
+                self.botonFacebook.delegate = self
+                self.botonFacebook.isHidden = false
+                
+            }
+        }
     }
     
     // #pragma mark - textField
@@ -60,17 +79,63 @@ class RegistroUsuarioViewController: UIViewController, UITextFieldDelegate
                     {
                         ComandoUsuario.registrarUsuario(uid: (user?.uid)!, correo: self.txtCorreo.text!)
                         
-                        self.performSegue(withIdentifier: "ingresoExitosoDesdeRegistroUsuario", sender: self)
+                        //self.performSegue(withIdentifier: "ingresoExitosoDesdeRegistroUsuario", sender: self)
                     }
                 })
             }else
             {
                 self.mostrarAlerta(titulo: "e-mail Inválido", mensaje: "El e-mail no es válido, escríbelo correctamente para que puedas registrarte")
             }
-        } else
-        {
-            print("Registro por FB")
         }
+    }
+    
+    // #pragma mark - FBSDKLoginButtonDelegate Methods
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!)
+    {
+        self.botonFacebook.isHidden = true
+        
+        if let error = error {
+            print(error.localizedDescription)
+            self.botonFacebook.isHidden = false
+            return
+        }
+        
+        if  result.isCancelled {
+            self.botonFacebook.isHidden = false
+            return
+        }
+        
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        
+        var email = ""
+        
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            if let error = error {
+                self.mostrarAlerta(titulo: "Registro", mensaje: "No se ha podido hacer el registro. La dirección de correo electrónico ya está en uso por otra cuenta.")
+                print(error.localizedDescription)
+                return
+            }
+            
+            let testMail:String?
+            
+            if user?.email == nil {
+                
+                testMail = user?.providerData[0].email
+                
+                if testMail != nil {
+                    email = testMail!
+                }
+            }
+            
+            ComandoUsuario.registrarUsuario(uid: (user?.uid)!, correo: email)
+        }
+    }
+    
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!)
+    {
+        print("Se Deslogeo")
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -93,7 +158,7 @@ class RegistroUsuarioViewController: UIViewController, UITextFieldDelegate
         
         btnRegistro.layer.cornerRadius = 10.0
         
-        btnRegistroFB.layer.cornerRadius = 10.0
+        //btnRegistroFB.layer.cornerRadius = 10.0
         
         if DeviceType.IS_IPHONE_5
         {

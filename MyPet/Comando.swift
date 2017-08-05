@@ -701,6 +701,36 @@ class Comando
         });
     }
     
+    // Validar ingreso (FB/Correo)
+    
+    class func validarTipoIngreso() -> Bool
+    {
+        let user = FIRAuth.auth()?.currentUser
+        
+        if user != nil
+        {
+            var provider = ""
+            
+            for profile in user!.providerData
+            {
+                let providerID = profile.providerID
+                let uid = profile.uid;  // Provider-specific UID
+                provider = profile.providerID
+            }
+            
+            if provider == "facebook.com"
+            {
+                return true
+            }
+            else
+            {
+                return false
+            }
+        }
+        
+        return false
+    }
+    
     // Datos Sistema
     
     class func updateDataSystem(tipo:String, uid:String, version : String)
