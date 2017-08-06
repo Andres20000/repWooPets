@@ -310,6 +310,9 @@ class ComandoUsuario
         refHandle.child("/idCliente").setValue(pregunta.idCliente)
         refHandle.child("/idPublicacion").setValue(pregunta.idPublicacion)
         refHandle.child("/pregunta").setValue(pregunta.pregunta)
+        
+        let model = Modelo.sharedInstance
+        model.preguntasPublicacion.removeAll()
     }
 }
 

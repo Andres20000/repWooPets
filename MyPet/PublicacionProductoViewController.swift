@@ -265,7 +265,7 @@ class PublicacionProductoViewController: UIViewController, UIPageViewControllerD
         
         ComandoPublicacion.getPreguntasRespuestasPublicacionOferente(idPublicacion: modelOferente.publicacion.idPublicacion!)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(PublicacionServicioViewController.refrescarVista(_:)), name:NSNotification.Name(rawValue:"cargoPreguntasRespuestasPublicacion"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PublicacionProductoViewController.refrescarVista(_:)), name:NSNotification.Name(rawValue:"cargoPreguntasRespuestasPublicacion"), object: nil)
     }
     
     override func didReceiveMemoryWarning()

@@ -40,6 +40,7 @@ class VistaPreguntasViewController: UIViewController, UITableViewDelegate, UITab
         
         let nib = UINib(nibName: "PreguntaRespuestaTableViewCell", bundle: nil)
         tablePreguntasRespuestas.register(nib, forCellReuseIdentifier: "preguntaRespuestaTableViewCell")
+        
     }
     
     func refrescarVista(_ notification: Notification)
@@ -151,9 +152,11 @@ class VistaPreguntasViewController: UIViewController, UITableViewDelegate, UITab
     {
         super.viewWillAppear(animated)
         
-        ComandoPublicacion.getPreguntasRespuestasPublicacionOferente(idPublicacion: modelOferente.publicacion.idPublicacion!)
+        tablePreguntasRespuestas.reloadData()
+        //tablePreguntasRespuestas.reloadData()
+        //model.preguntasPublicacion.removeAll()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(VistaPreguntasViewController.refrescarVista(_:)), name:NSNotification.Name(rawValue:"cargoPreguntasRespuestasPublicacion"), object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(VistaPreguntasViewController.refrescarVista(_:)), name:NSNotification.Name(rawValue:"cargoPreguntasRespuestasPublicacion"), object: nil)
     }
     
     override func didReceiveMemoryWarning()
@@ -229,7 +232,7 @@ class VistaPreguntasViewController: UIViewController, UITableViewDelegate, UITab
             } else {
                 return "Hace un minuto"
             }
-        } else if (components.second! >= 3) {
+        } else if (components.second! >= 55) {
             return "Hace \(components.second!) segundos"
         } else {
             return "Justo ahora"

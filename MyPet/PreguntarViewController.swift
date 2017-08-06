@@ -11,6 +11,7 @@ import FirebaseAuth
 
 class PreguntarViewController: UIViewController, UITextViewDelegate
 {
+    let model = Modelo.sharedInstance
     let modelOferente = ModeloOferente.sharedInstance
     
     var preguntaFormulada = Pregunta()
@@ -91,14 +92,36 @@ class PreguntarViewController: UIViewController, UITextViewDelegate
             
             ComandoUsuario.preguntarEnPublicacion(pregunta: preguntaFormulada)
             
-            let transition = CATransition()
-            transition.duration = 0.5
-            transition.type = kCATransitionPush
-            transition.subtype = kCATransitionFromLeft
-            view.window!.layer.add(transition, forKey: kCATransition)
+            let alert:UIAlertController = UIAlertController(title: "¡Envío exitoso!", message: "Tu pregunta ha sido enviada a la persona encargada. Mas adelante te llegará una notificación informándote su respuesta", preferredStyle: .alert)
             
-            dismiss(animated: true, completion: nil)
+            let continuarAction = UIAlertAction(title: "OK", style: .default)
+            {
+                UIAlertAction in self.avisoPreguntaEnviada()
+            }
+            
+            // Add the actions
+            alert.addAction(continuarAction)
+            
+            self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    func avisoPreguntaEnviada()
+    {
+        ComandoPublicacion.getPreguntasRespuestasPublicacionOferente(idPublicacion: modelOferente.publicacion.idPublicacion!)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(PreguntarViewController.cargarPregunta(_:)), name:NSNotification.Name(rawValue:"cargoPreguntasRespuestasPublicacion"), object: nil)
+    }
+    
+    func cargarPregunta(_ notification: Notification)
+    {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromLeft
+        view.window!.layer.add(transition, forKey: kCATransition)
+        
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidAppear(_ animated: Bool)
