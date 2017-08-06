@@ -11,7 +11,8 @@ import FirebaseAuth
 
 class PublicacionProductoViewController: UIViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource
 {
-    let model = ModeloUsuario.sharedInstance
+    let model = Modelo.sharedInstance
+    let modelUsuario = ModeloUsuario.sharedInstance
     let modelOferente = ModeloOferente.sharedInstance
     
     let  user = FIRAuth.auth()?.currentUser
@@ -33,6 +34,8 @@ class PublicacionProductoViewController: UIViewController, UIPageViewControllerD
     
     @IBOutlet var lblDisponible: UILabel!
     @IBOutlet var lblQCompra: UILabel!
+    
+    @IBOutlet var lblPreguntas: UILabel!
     
     @IBOutlet var btnComprar: UIButton!
     @IBOutlet var btnCarrito: UIButton!
@@ -87,15 +90,15 @@ class PublicacionProductoViewController: UIViewController, UIPageViewControllerD
 
     func refrescarVista(_ notification: Notification)
     {
-        if model.usuario.count != 0
+        if modelUsuario.usuario.count != 0
         {
-            if model.usuario[0].datosComplementarios?.count != 0
+            if modelUsuario.usuario[0].datosComplementarios?.count != 0
             {
-                if model.usuario[0].datosComplementarios?[0].favoritos?.count != 0
+                if modelUsuario.usuario[0].datosComplementarios?[0].favoritos?.count != 0
                 {
                     var activo:Bool = false
                     
-                    for favorito in (model.usuario[0].datosComplementarios?[0].favoritos)!
+                    for favorito in (modelUsuario.usuario[0].datosComplementarios?[0].favoritos)!
                     {
                         if favorito.idPublicacion == modelOferente.publicacion.idPublicacion!
                         {
@@ -123,28 +126,42 @@ class PublicacionProductoViewController: UIViewController, UIPageViewControllerD
         {
             barItemFavorito.image = UIImage(named: "btnNoFavorito")?.withRenderingMode(.alwaysOriginal)
         }
+        
+        if model.preguntasPublicacion.count == 0
+        {
+            lblPreguntas.text = "Aún no hay preguntas"
+        } else
+        {
+            if model.preguntasPublicacion.count == 1
+            {
+                lblPreguntas.text = "Ver la pregunta realizada"
+            } else
+            {
+                lblPreguntas.text = "Ver las \(model.preguntasPublicacion.count) preguntas realizadas"
+            }
+        }
     }
     
     @IBAction func marcarComoFavorito(_ sender: Any)
     {
-        if model.usuario.count == 0
+        if modelUsuario.usuario.count == 0
         {
             self.mostrarAlerta(titulo: "Lo sentimos", mensaje: "Para poder marcarlo como Favorito debes estar registrado")
         }else
         {
-            if model.usuario[0].datosComplementarios?.count == 0
+            if modelUsuario.usuario[0].datosComplementarios?.count == 0
             {
                 self.mostrarAlerta(titulo: "Lo sentimos", mensaje: "Para poder marcarlo como Favorito debes estar completamente registrado")
             } else
             {
-                if model.usuario[0].datosComplementarios?[0].favoritos?.count == 0
+                if modelUsuario.usuario[0].datosComplementarios?[0].favoritos?.count == 0
                 {
                     ComandoUsuario.activarDesactivarFavorito(uid: (user?.uid)!, idPublicacion: modelOferente.publicacion.idPublicacion!, activo: true)
                 }else
                 {
                     var activo:Bool = true
                     
-                    for favorito in (model.usuario[0].datosComplementarios?[0].favoritos)!
+                    for favorito in (modelUsuario.usuario[0].datosComplementarios?[0].favoritos)!
                     {
                         if favorito.idPublicacion == modelOferente.publicacion.idPublicacion!
                         {
@@ -195,13 +212,25 @@ class PublicacionProductoViewController: UIViewController, UIPageViewControllerD
     
     @IBAction func preguntar(_ sender: Any)
     {
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.type = kCATransitionPush
-        transition.subtype = kCATransitionFromRight
-        view.window!.layer.add(transition, forKey: kCATransition)
-        
-        self.performSegue(withIdentifier: "preguntarDesdePublicacionProducto", sender: self)
+        if modelUsuario.usuario.count == 0
+        {
+            self.mostrarAlerta(titulo: "Lo sentimos", mensaje: "Para formular tu pregunta debes estar registrado y así poder enviarte una notificación cuando haya una respuesta")
+        }else
+        {
+            if modelUsuario.usuario[0].datosComplementarios?.count == 0
+            {
+                self.mostrarAlerta(titulo: "Lo sentimos", mensaje: "Para formular tu pregunta debes estar completamente registrado y así poder enviarte una notificación cuando haya una respuesta")
+            } else
+            {
+                let transition = CATransition()
+                transition.duration = 0.5
+                transition.type = kCATransitionPush
+                transition.subtype = kCATransitionFromRight
+                view.window!.layer.add(transition, forKey: kCATransition)
+                
+                self.performSegue(withIdentifier: "preguntarDesdePublicacionProducto", sender: self)
+            }
+        }
     }
     
     @IBAction func verInfoVendedor(_ sender: Any)
@@ -233,6 +262,10 @@ class PublicacionProductoViewController: UIViewController, UIPageViewControllerD
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(PublicacionProductoViewController.refrescarVista(_:)), name:NSNotification.Name(rawValue:"cargoUsuario"), object: nil)
+        
+        ComandoPublicacion.getPreguntasRespuestasPublicacionOferente(idPublicacion: modelOferente.publicacion.idPublicacion!)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(PublicacionServicioViewController.refrescarVista(_:)), name:NSNotification.Name(rawValue:"cargoPreguntasRespuestasPublicacion"), object: nil)
     }
     
     override func didReceiveMemoryWarning()

@@ -301,4 +301,51 @@ class ComandoUsuario
         let refHandle = FIRDatabase.database().reference().child("clientes/" + uid! + "/favoritos")
         refHandle.child("/\(idPublicacion!)").setValue(activo)
     }
+    
+    class func preguntarEnPublicacion(pregunta:Pregunta)
+    {
+        let refHandle  = FIRDatabase.database().reference().child("preguntas").childByAutoId()
+        
+        refHandle.child("/fechaPregunta").setValue(pregunta.fechaPregunta)
+        refHandle.child("/idCliente").setValue(pregunta.idCliente)
+        refHandle.child("/idPublicacion").setValue(pregunta.idPublicacion)
+        refHandle.child("/pregunta").setValue(pregunta.pregunta)
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

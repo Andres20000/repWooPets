@@ -110,8 +110,6 @@ class Comando
                 
                 datosPublicacion.activo = value["activo"] as? Bool
                 datosPublicacion.categoria = value["categoria"] as? String
-                
-                
                 datosPublicacion.descripcion = value["descripcion"] as? String
                 datosPublicacion.destacado = value["destacado"] as? Bool
                 

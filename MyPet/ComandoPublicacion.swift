@@ -296,6 +296,64 @@ class ComandoPublicacion
         }
         
     }
+    
+    class func getPreguntasRespuestasPublicacionOferente(idPublicacion:String)
+    {
+        let model = Modelo.sharedInstance
+        model.preguntasPublicacion.removeAll()
+        
+        let refHandle = FIRDatabase.database().reference().child("preguntas")
+        
+        let ref = refHandle.queryOrdered(byChild: "/idPublicacion").queryEqual(toValue: idPublicacion)
+        
+        ref.observe(.value, with: {(snap) -> Void in
+            
+            let preguntas = snap.children
+            
+            while let pregunta = preguntas.nextObject() as? FIRDataSnapshot
+            {
+                let datosPregunta = Pregunta()
+                let value = pregunta.value as! [String : AnyObject]
+                
+                datosPregunta.fechaPregunta = value["fechaPregunta"] as? String
+                
+                if pregunta.hasChild("fechaRespuesta")
+                {
+                    datosPregunta.fechaRespuesta = value["fechaRespuesta"] as? String
+                }
+                
+                datosPregunta.idCliente = value["idCliente"] as? String
+                
+                if pregunta.hasChild("idOferente")
+                {
+                    datosPregunta.idOferente = value["idOferente"] as? String
+                }
+                
+                datosPregunta.idPregunta = pregunta.key
+                datosPregunta.idPublicacion = value["idPublicacion"] as? String
+                datosPregunta.pregunta = value["pregunta"] as? String
+                
+                if pregunta.hasChild("respuesta")
+                {
+                    datosPregunta.respuesta = value["respuesta"] as? String
+                }
+                
+                if pregunta.hasChild("tokenDeviceCliente")
+                {
+                    datosPregunta.tokenDeviceCliente = value["tokenDeviceCliente"] as? String
+                }
+                
+                if pregunta.hasChild("tokenDeviceOferente")
+                {
+                    datosPregunta.tokenDeviceOferente = value["tokenDeviceOferente"] as? String
+                }
+                
+                model.preguntasPublicacion.append(datosPregunta)
+            }
+            
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "cargoPreguntasRespuestasPublicacion"), object: nil)
+        })
+    }
 }
 
 
