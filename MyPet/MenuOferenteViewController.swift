@@ -15,11 +15,31 @@ class MenuOferenteViewController: UIViewController
     
     @IBOutlet var lblRazonSocial: UILabel!
     
+    
+    @IBOutlet weak var numeroPreguntas: UILabel!
+    
+    @IBOutlet weak var circuloRojo: UIImageView!
+    
+    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let preguntas = model.numeroPreguntasSinRespuesta()
+        if   preguntas == 0 {
+            circuloRojo.isHidden = true
+        }
+        else {
+            circuloRojo.isHidden = false
+            numeroPreguntas.text = String(preguntas)
+        }
     }
 
     func cargarDatosOferente(_ notification: Notification)
