@@ -43,6 +43,19 @@ class FrecuenciaRecordatorio
     var nombreFrecuencia:String?  = ""
 }
 
+class Pregunta
+{
+    var fechaPregunta:String?  = ""
+    var fechaRespuesta:String?  = ""
+    var idCliente:String?  = ""
+    var idOferente:String?  = ""
+    var idPregunta:String?  = ""
+    var idPublicacion:String?  = ""
+    var pregunta:String?  = ""
+    var respuesta:String?  = ""
+    var timestamp:CLong?
+}
+
 class Modelo
 {
     static let sharedInstance:Modelo =
@@ -135,6 +148,9 @@ class Modelo
     var publicacionesPorCategoriaPorMascota = [PublicacionOferente]()
     
     var publicacionSeleccionada = PublicacionOferente()
+    
+    // Datos Preguntas y Respuestas
+    var preguntasPublicacion = [Pregunta]()
     
     // Datos Mascota
     var tiposMascota = [TiposMascota]()

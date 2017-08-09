@@ -10,8 +10,9 @@ import UIKit
 
 class PreguntaRespuestaTableViewCell: UITableViewCell
 {
-    @IBOutlet var lblFecha: UILabel!
+    @IBOutlet var lblFechaPregunta: UILabel!
     @IBOutlet var lblPreguntaUsuario: UILabel!
+    @IBOutlet var lblFechaRespuesta: UILabel!
     @IBOutlet var lblEstadoPregunta: UILabel!
     @IBOutlet var textRespuestaOferente: UITextView!
     

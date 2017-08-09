@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class PreguntarViewController: UIViewController, UITextViewDelegate
 {
+    let model = Modelo.sharedInstance
+    let modelOferente = ModeloOferente.sharedInstance
+    
+    var preguntaFormulada = Pregunta()
+    
     @IBOutlet var barItemOK: UIBarButtonItem!
     @IBOutlet var textPregunta: UITextView!
     
@@ -53,15 +59,70 @@ class PreguntarViewController: UIViewController, UITextViewDelegate
     {
         if (textView.text.characters.count) < 10
         {
-            self.mostrarAlerta(titulo: "!Advertencia!", mensaje: "La descripción debe ser mínimo de 10 caracteres")
+            self.mostrarAlerta(titulo: "!Advertencia!", mensaje: "La pregunta debe ser mínimo de 10 caracteres")
             
             textView.text = "¿Cuál es tu duda? Escribe aquí."
+            preguntaFormulada.pregunta = ""
             
         }else
         {
-            print("OK")
-            //model.publicacion.descripcion = textView.text
+            preguntaFormulada.pregunta = textView.text
         }
+    }
+    
+    @IBAction func enviarPregunta(_ sender: Any)
+    {
+        view.endEditing(true)
+        
+        if preguntaFormulada.pregunta == ""
+        {
+            self.mostrarAlerta(titulo: "¡Advertencia!", mensaje: "Formula tu pregunta para poder enviarla")
+        } else
+        {
+            let  user = FIRAuth.auth()?.currentUser
+            let nowDate = NSDate()
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy h:mm a"
+            let dateString = dateFormatter.string(from: nowDate as Date)
+            
+            preguntaFormulada.fechaPregunta = dateString
+            preguntaFormulada.idCliente = (user?.uid)!
+            preguntaFormulada.idOferente = modelOferente.publicacion.idOferente
+            preguntaFormulada.idPublicacion = modelOferente.publicacion.idPublicacion
+            
+            ComandoUsuario.preguntarEnPublicacion(pregunta: preguntaFormulada)
+            
+            let alert:UIAlertController = UIAlertController(title: "¡Envío exitoso!", message: "Tu pregunta ha sido enviada a la persona encargada. Mas adelante te llegará una notificación informándote su respuesta", preferredStyle: .alert)
+            
+            let continuarAction = UIAlertAction(title: "OK", style: .default)
+            {
+                UIAlertAction in self.avisoPreguntaEnviada()
+            }
+            
+            // Add the actions
+            alert.addAction(continuarAction)
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func avisoPreguntaEnviada()
+    {
+        ComandoPublicacion.getPreguntasRespuestasPublicacionOferente(idPublicacion: modelOferente.publicacion.idPublicacion!)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(PreguntarViewController.cargarPregunta(_:)), name:NSNotification.Name(rawValue:"cargoPreguntasRespuestasPublicacion"), object: nil)
+    }
+    
+    func cargarPregunta(_ notification: Notification)
+    {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromLeft
+        view.window!.layer.add(transition, forKey: kCATransition)
+        
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidAppear(_ animated: Bool)
