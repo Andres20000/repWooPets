@@ -13,6 +13,7 @@ import Firebase
 class Comando
 {
     // Datos Publicaciones
+    // Solo un test desde Comando
     
     class func getPublicaciones()
     {
