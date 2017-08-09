@@ -554,6 +554,7 @@
 		84F4FA491EAA955900F3E69A /* MyPet */ = {
 			isa = PBXGroup;
 			children = (
+				840B1B5B1F36612500423832 /* Oferente.storyboard */,
 				847FDC331ED6818E002F9530 /* Helpers */,
 				84417BA01EBC507800A70ABC /* Firebase */,
 				84F4FA4A1EAA955900F3E69A /* AppDelegate.swift */,
@@ -566,7 +567,6 @@
 				84F4FA5C1EAA9BB000F3E69A /* Oferente */,
 				84D5AC071EE7A61600A18D7E /* Usuario */,
 				84F4FA4E1EAA955900F3E69A /* Main.storyboard */,
-				840B1B5B1F36612500423832 /* Oferente.storyboard */,
 				84F4FA511EAA955900F3E69A /* Assets.xcassets */,
 				84F4FA531EAA955900F3E69A /* LaunchScreen.storyboard */,
 				84F4FA561EAA955900F3E69A /* Info.plist */,
