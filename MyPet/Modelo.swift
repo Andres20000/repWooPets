@@ -53,8 +53,7 @@ class Pregunta
     var idPublicacion:String?  = ""
     var pregunta:String?  = ""
     var respuesta:String?  = ""
-    var tokenDeviceCliente:String?  = ""
-    var tokenDeviceOferente:String?  = ""
+    var timestamp:CLong?
 }
 
 class Modelo

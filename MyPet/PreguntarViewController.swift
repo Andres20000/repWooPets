@@ -88,6 +88,7 @@ class PreguntarViewController: UIViewController, UITextViewDelegate
             
             preguntaFormulada.fechaPregunta = dateString
             preguntaFormulada.idCliente = (user?.uid)!
+            preguntaFormulada.idOferente = modelOferente.publicacion.idOferente
             preguntaFormulada.idPublicacion = modelOferente.publicacion.idPublicacion
             
             ComandoUsuario.preguntarEnPublicacion(pregunta: preguntaFormulada)

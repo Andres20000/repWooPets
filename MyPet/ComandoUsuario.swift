@@ -308,8 +308,10 @@ class ComandoUsuario
         
         refHandle.child("/fechaPregunta").setValue(pregunta.fechaPregunta)
         refHandle.child("/idCliente").setValue(pregunta.idCliente)
+        refHandle.child("/idOferente").setValue(pregunta.idOferente)
         refHandle.child("/idPublicacion").setValue(pregunta.idPublicacion)
         refHandle.child("/pregunta").setValue(pregunta.pregunta)
+        refHandle.child("/timestamp").setValue(FIRServerValue.timestamp())
         
         let model = Modelo.sharedInstance
         model.preguntasPublicacion.removeAll()

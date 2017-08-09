@@ -323,12 +323,7 @@ class ComandoPublicacion
                 }
                 
                 datosPregunta.idCliente = value["idCliente"] as? String
-                
-                if pregunta.hasChild("idOferente")
-                {
-                    datosPregunta.idOferente = value["idOferente"] as? String
-                }
-                
+                datosPregunta.idOferente = value["idOferente"] as? String
                 datosPregunta.idPregunta = pregunta.key
                 datosPregunta.idPublicacion = value["idPublicacion"] as? String
                 datosPregunta.pregunta = value["pregunta"] as? String
@@ -338,15 +333,7 @@ class ComandoPublicacion
                     datosPregunta.respuesta = value["respuesta"] as? String
                 }
                 
-                if pregunta.hasChild("tokenDeviceCliente")
-                {
-                    datosPregunta.tokenDeviceCliente = value["tokenDeviceCliente"] as? String
-                }
-                
-                if pregunta.hasChild("tokenDeviceOferente")
-                {
-                    datosPregunta.tokenDeviceOferente = value["tokenDeviceOferente"] as? String
-                }
+                datosPregunta.timestamp = value["timestamp"] as? CLong
                 
                 model.preguntasPublicacion.append(datosPregunta)
             }

@@ -5237,7 +5237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXj-wI-aif" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29.600000000000001" y="627.4362818590705"/>
+            <point key="canvasLocation" x="6868" y="-2431"/>
         </scene>
         <!--Page View Controller With Overlay Indicator-->
         <scene sceneID="TFd-Yx-1Qj">
@@ -5249,7 +5249,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="psI-Ij-rRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="724" y="627"/>
+            <point key="canvasLocation" x="6086" y="-2431"/>
         </scene>
         <!--UITabBarController-p9Q-5F-oME-->
         <scene sceneID="X2D-SP-gre">
