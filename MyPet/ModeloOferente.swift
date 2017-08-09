@@ -412,6 +412,8 @@ class TipoMascotas
     }
 }
 
+
+
 class ModeloOferente
 {
     static let sharedInstance:ModeloOferente =
@@ -441,7 +443,17 @@ class ModeloOferente
     
     var publicacionesActivas = [PublicacionOferente]()
     var publicacionesInactivas = [PublicacionOferente]()
+    
+    
+    func numeroPreguntasSinRespuesta() -> Int {
+        
+        return 2
+        
+        
+    }
 }
+
+
 
 extension String
 {
